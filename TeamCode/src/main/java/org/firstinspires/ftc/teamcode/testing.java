@@ -64,12 +64,13 @@ public class testing extends LinearOpMode implements CameraBridgeViewBase.CvCame
 
         inputFrame.rgba().release();
         inputFrame.gray().release();
-        //retina.applyFastToneMapping(input,input);
+        retina.applyFastToneMapping(input,input);
 
         Mat yuv = new Mat();
-        Imgproc.cvtColor(input,yuv,Imgproc.COLOR_BGR2YUV); //yep, I have gone insane now
+        Imgproc.cvtColor(input,yuv,Imgproc.COLOR_BGR2YUV);
         Mat uChan = new Mat();
         Core.extractChannel(yuv,uChan,1);
+        Mat b = new Mat();
         Imgproc.medianBlur(uChan,uChan,9);
         //Imgproc.filter2D(uChan,uChan,-1,Imgproc.getStructuringElement(Imgproc.MORPH_RECT,new Size(1,1)));
         //showResult(b);
@@ -103,7 +104,7 @@ public class testing extends LinearOpMode implements CameraBridgeViewBase.CvCame
 
         double stdm1[] = calcStdDevMean(bChan);
 
-        Imgproc.threshold(bChan,labThreshBinary,stdm1[1],255,Imgproc.THRESH_BINARY);
+        Imgproc.threshold(bChan,labThreshBinary,160,255,Imgproc.THRESH_BINARY);
         Imgproc.threshold(bChan,labThreshOtsu,0,255,Imgproc.THRESH_OTSU);
 
         //showResult(labThreshBinary);
@@ -144,24 +145,25 @@ public class testing extends LinearOpMode implements CameraBridgeViewBase.CvCame
 
         Imgproc.medianBlur(temp2,temp2,9);
 
+        //showResult(temp2);
+
         double stdm2[] = calcStdDevMean(temp2);
 
         Core.MinMaxLocResult minMaxLocResult = Core.minMaxLoc(temp2);
-        //don't ask, you don't want to know
-        Imgproc.threshold(temp2,temp2,0.75*minMaxLocResult.maxVal,255,Imgproc.THRESH_BINARY);
 
-        telemetry.addData("mean",stdm2[1]);
-        telemetry.addData("std",stdm2[0]);
-        telemetry.addData("using method",(stdm2[0]<60 && stdm2[1] > 70 && stdm2[1] < 140) ? "1" : "2");
-        telemetry.update();
+        Imgproc.circle(input,minMaxLocResult.maxLoc,10,new Scalar(0,0,0),-1);
 
+        //Imgproc.adaptiveThreshold(temp2,temp2,255,Imgproc.ADAPTIVE_THRESH_GAUSSIAN_C,Imgproc.THRESH_BINARY,13,0);
         //showResult(temp2);
+        //Imgproc.threshold(temp2,temp2,0.75*minMaxLocResult.maxVal,255,Imgproc.THRESH_OTSU);
+
+
 
         //showResult(sChan);
 
         //showResult(labThresh);
 
-        Core.bitwise_and(temp2,labThresh,labThresh);
+        //Core.bitwise_and(temp2,labThresh,labThresh);
 
         //showResult(temp2);
 
@@ -248,8 +250,10 @@ public class testing extends LinearOpMode implements CameraBridgeViewBase.CvCame
         //showResult(edges);
 
         //Removes used images from memory to avoid overflow crashes
-        //lease();
+        edges.release();
 
+        MatOfPoint bestContour = new MatOfPoint();
+        double maxMean = 0;
         int detected = 0;
         List<Double> usedx = new ArrayList<>();
         List<Double> usedy = new ArrayList<>();
@@ -258,65 +262,28 @@ public class testing extends LinearOpMode implements CameraBridgeViewBase.CvCame
             //Approximates the shape to smooth out excess edges
             MatOfPoint2f approx = new MatOfPoint2f();
             double peri = Imgproc.arcLength(new MatOfPoint2f(contours.get(i).toArray()), true);
-            Imgproc.approxPolyDP(new MatOfPoint2f(contours.get(i).toArray()), approx, 0.03 * peri, true); //0.1 is a detail factor, higher factor = lower detail, lower factor = higher detail
+            Imgproc.approxPolyDP(new MatOfPoint2f(contours.get(i).toArray()), approx, 0.1 * peri, true); //0.1 is a detail factor, higher factor = lower detail, lower factor = higher detail
             MatOfPoint approxMop = new MatOfPoint(approx.toArray());
 
+            //Calculates a convex hull of the shape, covering up any dents
+            MatOfPoint convex = hull(approxMop);
             //Does a simple size check to eliminate extremely small contours
             if (Imgproc.contourArea(approxMop) > 100) {
 
                 //Checks if one of the distance transform centers is contained within the shape
-                Rect box = calcBox(contours.get(i));
-                Imgproc.putText(input,"1",new Point(box.x, box.y), Core.FONT_HERSHEY_COMPLEX, 1, new Scalar(0, 0, 0), 3);
+
+                //Imgproc.putText(input,"1",new Point(box.x, box.y), Imgproc.FONT_HERSHEY_COMPLEX, 1, new Scalar(0, 0, 0), 3);
                 Point center = getCenter(approxMop);
                 if (containsPoint(approx,centers) && !(usedx.contains(center.x) && usedy.contains(center.y))) {
-
                     usedx.add(center.x);
                     usedy.add(center.y);
-                    //Calculates a convex hull of the shape, covering up any dents
-                    MatOfPoint convex = hull(approxMop);
-                    //Calculates a rectangle that lies completely inside the shape
-                    Rect bbox = calcBox(convex);
 
-                    //Size check to see if the box could be calculated
-                    if (bbox.x >= 0 && bbox.y >= 0 && bbox.x + bbox.width <= masked.cols() && bbox.y + bbox.height <= masked.rows()) {
-                        //Selects the region of interest (roi) determined from the calcBox function from the masked h channel image
-                        Mat roi = masked.submat(bbox);
-                        //Calculates the standard deviation and mean of the selected region. In this case it will calculate the average color and the color standard deviation
-                        double[] stdMean = calcStdDevMean(roi);
-
-                        //Does a test for average color and standard deviation (average color between 10 and 40, exclusive, and standard deviation less than 24)
-
-                        System.out.println(stdMean[1]);
-                        System.out.println(stdMean[0]);
-                        System.out.println();
-
-                        if (stdMean[1] > 12 && stdMean[1] < 51 && stdMean[0] < 24) {
-                            //Calculate the overall bounding rectangle around the shape
-                            Rect bboxLarge = Imgproc.boundingRect(convex);
-
-                            List<MatOfPoint> approxList = new ArrayList<>();
-                            approxList.add(convex);
-
-
-                            //Imgproc.drawContours(input, contours, i, new Scalar(255, 0, 0), 9);
-                            //Imgproc.drawContours(input,approxList,-1,new Scalar(0,0,255),9);
-                            Imgproc.putText(input, Double.toString(Math.floor(100*(1.0 * bboxLarge.width) / (1.0 * bboxLarge.height))/100.0), new Point(bbox.x, bbox.y), Core.FONT_HERSHEY_COMPLEX, 1, new Scalar(255, 0, 0), 3);
-
-                            //Checks the size of the bounding box against what it can be based on a model of a rotating cube. Tolerance is added to account for noise
-                            double tolerance = 0.2; //must be positive
-                            //((1.0 * bboxLarge.width) / (1.0 * bboxLarge.height)) > Math.sqrt(2.0 / 3.0) * (1 - tolerance) && ((1.0 * bboxLarge.width) / (1.0 * bboxLarge.height)) < Math.sqrt(3.0 / 2.0) * (1 + tolerance)
-                            if (true) {
-                                //Checks if shape has 4 or 6 corners, which will be true for any cube-shaped object
-
-                                if (convex.toList().size() == 4 || convex.toList().size() == 5 || convex.toList().size() == 6) {
-                                    //Draws shape to screen
-                                    Imgproc.drawContours(input, approxList, 0, new Scalar(0, 255, 0), 9);
-                                    detected++;
-                                    Imgproc.putText(input, Integer.toString(detected),new Point(bbox.x, bbox.y), Core.FONT_HERSHEY_COMPLEX, 3, new Scalar(255, 0, 255), 3);
-                                    approxList.clear();
-                                }
-                            }
-                        }
+                    Rect box = Imgproc.boundingRect(convex);
+                    Mat roi = temp2.submat(box);
+                    double[] sm = calcStdDevMean(roi);
+                    if(sm[1] > maxMean) {
+                        bestContour = new MatOfPoint(convex.toArray());
+                        maxMean = sm[1];
                     }
                 }
             }
@@ -326,18 +293,20 @@ public class testing extends LinearOpMode implements CameraBridgeViewBase.CvCame
             approxMop.release();
         }
 
+        if(!bestContour.empty()) {
+            List<MatOfPoint> g = new ArrayList<>();
+            g.add(bestContour);
+            Imgproc.drawContours(input, g, -1, new Scalar(0, 255, 0), 1);
+        }
         //Removes used images from memory to avoid overflow crashes
         masked.release();
 
         //Empties the cosmic garbage can
         System.gc();
 
-        Mat returnImage = input;
+        Mat returnImage = labThresh;
 
         Imgproc.resize(returnImage,returnImage,new Size(1280,720));
-
-        //Empties the cosmic garbage can
-        System.gc();
 
         return returnImage;
     }
