@@ -110,13 +110,13 @@ public class GoldMine2 extends LinearOpMode implements CameraBridgeViewBase.CvCa
 
         Mat sChanNorm = new Mat();
 
-        Core.normalize(sChan,sChanNorm,0,255,Core.NORM_MINMAX);
+        Mat bChanNorm = new Mat();
+        Core.normalize(sChan,sChanNorm,0,255/2.0,Core.NORM_MINMAX);
+        Core.normalize(sChan,bChanNorm,0,255/2.0,Core.NORM_MINMAX);
 
         Mat sbChan = new Mat();
 
-        Core.scaleAdd(bChan,(1.0/255),sChanNorm,sbChan);
-
-        Core.normalize(sbChan,sbChan,0,255,Core.NORM_MINMAX);
+        Core.add(bChanNorm,sChanNorm,sbChan);
 
         Imgproc.threshold(sbChan,labThreshBinary,stdm1[1]+stdm1[0],255,Imgproc.THRESH_BINARY);
         Imgproc.threshold(bChan,labThreshOtsu,0,255,Imgproc.THRESH_OTSU);
@@ -288,7 +288,7 @@ public class GoldMine2 extends LinearOpMode implements CameraBridgeViewBase.CvCa
 
         //Empties the cosmic garbage can
         System.gc();
-        Mat returnImage = edges;
+        Mat returnImage = sbChan;
 
         Imgproc.resize(returnImage,returnImage,new Size(1280,720));
 
