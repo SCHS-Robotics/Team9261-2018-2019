@@ -64,118 +64,24 @@ public class GoldMine2 extends LinearOpMode implements CameraBridgeViewBase.CvCa
 
         Imgproc.resize(input, input, new Size(320, (int) Math.round((320/input.size().width)*input.size().height))); //Reduces image size for speed
 
-        Mat yuv = new Mat();
-        Imgproc.cvtColor(input,yuv,Imgproc.COLOR_BGR2YUV);
-        Mat uChan = new Mat();
-        Core.extractChannel(yuv,uChan,1);
-        Imgproc.medianBlur(uChan,uChan,9);
-        Mat a = new Mat();
-        Imgproc.threshold(uChan,a,145,255,Imgproc.THRESH_BINARY);
+        retina.applyFastToneMapping(input,input);
 
-        //Defines all Mats that will be used in the program
-        Mat lab = new Mat();
-        Mat labThreshBinary = new Mat();
-        Mat labThreshOtsu = new Mat();
+        Mat yuvThresh = new Mat();
         Mat labThresh = new Mat();
-        Mat hsv = new Mat();
-        Mat hChan = new Mat();
-        Mat bChan = new Mat();
+        Mat intensityMap = new Mat();
 
-        Imgproc.cvtColor(input,hsv,Imgproc.COLOR_RGB2HSV_FULL);
-        Core.extractChannel(hsv,hChan,0);
+        YUVProcess yuvProcess = new YUVProcess(input,yuvThresh);
+        HSV_LabProcess hsv_labProcess = new HSV_LabProcess(input,intensityMap,labThresh);
+        yuvProcess.run();
+        hsv_labProcess.run();
 
+        while(yuvProcess.running || hsv_labProcess.running);
 
-        Mat sChan = new Mat();
-        Core.extractChannel(hsv,sChan,1);
+        Core.bitwise_and(labThresh,yuvThresh,labThresh);
 
-
-        //Converts input from RGB color format to Lab color format, then extracts the b channel
-        //Lab is based on the opponent color model, and the b channel represents the blue-yellow axis, so it will be useful in finding yellow colors
-        Imgproc.cvtColor(input,lab,Imgproc.COLOR_RGB2Lab);
-        Core.extractChannel(lab,bChan,2);
-
-        //Removes used images from memory to avoid overflow crashes
-        //lab.release();
-
-
-
-        /*Thresholds the b channel in two different ways to get a binary filter (correct or not correct)
-        for all detected yellow pixels
-        The binary threshold selects all pixels with a b value above 145
-        The Otsu threshold does the same thing as the binary threshold, but tries to dynamically
-        select the threshold value (the value above which a pixel is considered yellow) to divide the
-        image by contrast. The binary threshold is very inclusive, for reasons that will become clear later*/
-
-        double stdm1[] = calcStdDevMean(bChan);
-
-        Mat sChanNorm = new Mat();
-
-        Mat bChanNorm = new Mat();
-        Core.normalize(sChan,sChanNorm,0,255/2.0,Core.NORM_MINMAX);
-        Core.normalize(sChan,bChanNorm,0,255/2.0,Core.NORM_MINMAX);
-
-        Mat sbChan = new Mat();
-
-        Core.add(bChanNorm,sChanNorm,sbChan);
-
-        Imgproc.threshold(sbChan,labThreshBinary,stdm1[1]+stdm1[0],255,Imgproc.THRESH_BINARY);
-        Imgproc.threshold(bChan,labThreshOtsu,0,255,Imgproc.THRESH_OTSU);
-
-        /*Otsu threshold will usually do a good job of segmenting the cubes from the rest of the
-        image (as they contrast heavily with the background), but does not function well when there
-        are no cubes in the image, as the optimal contrast threshold will not necessarily be filtering
-        for yellow. The binary threshold, however, is not affected by the absence of the cubes, and so
-        by performing a bitwise and of the images, we keep only the area where both thresholds agree,
-        which accounts for times when the cube is not in the image while keeping the otsu threshold's power*/
-        Core.bitwise_and(labThreshBinary,labThreshOtsu,labThresh);
-
-        //Removes used images from memory to avoid overflow crashes
-        //bChan.release();
-        //labThreshBinary.release();
-        labThreshOtsu.release();
-
-        //Converts input from RGB color format to HSV color format, then extracts the h channel
-        //HSV stands for hue, saturation, value. We are only interested in the h channel, which stores color information
-        //Because of its division of color into a separate channel, HSV format is resistant to lighting changes and so is good for color filtering
-
-        Mat temp = new Mat(hChan.size(),hChan.type(),new Scalar(50.59));
-
-        Mat temp2 = new Mat();
-        Core.absdiff(hChan,temp,temp2);
-
-        Core.bitwise_not(temp2,temp2);
-
-        Mat sChanNorm2 = new Mat();
-        Core.normalize(sChan,sChanNorm2,0,255,Core.NORM_MINMAX);
-
-        Core.bitwise_and(temp2,sChanNorm2,temp2);
-
-        Imgproc.medianBlur(temp2,temp2,9);
-
-        double stdm2[] = calcStdDevMean(temp2);
-
-        Core.MinMaxLocResult minMaxLocResult = Core.minMaxLoc(temp2);
-
-        Imgproc.circle(input,minMaxLocResult.maxLoc,10,new Scalar(0,0,0),-1);
-
-        //Imgproc.adaptiveThreshold(temp2,temp2,255,Imgproc.ADAPTIVE_THRESH_GAUSSIAN_C,Imgproc.THRESH_BINARY,13,0);
-        //Imgproc.threshold(temp2,temp2,0.75*minMaxLocResult.maxVal,255,Imgproc.THRESH_OTSU);
-
-
-        //Core.bitwise_and(temp2,labThresh,labThresh);
-
-
-        Core.bitwise_and(labThresh,a,labThresh);
+        yuvThresh.release();
 
         Imgproc.morphologyEx(labThresh,labThresh,Imgproc.MORPH_CLOSE,Imgproc.getStructuringElement(Imgproc.MORPH_RECT,new Size(5,5)));
-
-        //Masks image so that the only h regions detected are those that were also detected by the Lab otsu and binary thresholds
-        Mat masked = new Mat();
-        Core.bitwise_and(hChan,labThresh,masked);
-
-        //Removes used images from memory to avoid overflow crashes
-        hsv.release();
-        hChan.release();
 
         /*Computes the distance transform of the Lab image threshold and then does a binary threshold of that
         The distance transform sorts pixels by their distance from the nearest black pixel. Larger distance means a higher value
@@ -205,25 +111,17 @@ public class GoldMine2 extends LinearOpMode implements CameraBridgeViewBase.CvCa
         thresholded.release();
         List<Point> centers = new ArrayList<>();
         for(MatOfPoint shape : centerShapes) {
-            Moments moments = Imgproc.moments(shape);
-            centers.add(new Point(moments.m10/moments.m00,moments.m01/moments.m00));
+            centers.add(getCenter(shape));
             shape.release();
         }
 
         //Removes used images from memory to avoid overflow crashes
         //labThresh.release();
 
-        //Imgproc.bilateralFilter(masked,dst,5,5,5);
-        //Imgproc.GaussianBlur(labThresh,labThresh,new Size(5,5),0);
-
-        //Calculates the median value of the image
-        double med = getMedianNonZero(masked);
-
         //Dynamically calculates the best parameters for the Canny edge detector to find the edges of all of the detected shapes
         //Edges are represented as a binary image, with "on" pixels along the edge and "off" pixels everywhere else
         Mat edges = new Mat();
-        double sigma = 0.33;
-        Imgproc.Canny(labThresh,edges,(int) Math.round(Math.max(0,(1-sigma)*med)),(int) Math.round(Math.min(255,1+sigma)*med));
+        Imgproc.Canny(labThresh,edges,0,255);
 
         //Enhances edge information
         Imgproc.dilate(edges,edges,Imgproc.getStructuringElement(Imgproc.MORPH_CROSS,new Size(2,2)),new Point(),1);
@@ -233,11 +131,11 @@ public class GoldMine2 extends LinearOpMode implements CameraBridgeViewBase.CvCa
         Imgproc.findContours(edges,contours,new Mat(),Imgproc.RETR_LIST,Imgproc.CHAIN_APPROX_SIMPLE);
 
         //Removes used images from memory to avoid overflow crashes
-        //edges.release();
+        edges.release();
 
-        MatOfPoint bestContour = new MatOfPoint();
-        double maxMean = 0;
-        int detected = 0;
+        Core.MinMaxLocResult minMaxLocResult = Core.minMaxLoc(intensityMap);
+        double max = minMaxLocResult.maxVal;
+
         List<Double> usedx = new ArrayList<>();
         List<Double> usedy = new ArrayList<>();
         //Loops through the list of shapes (contours) and finds the ones most likely to be a cube
@@ -245,7 +143,7 @@ public class GoldMine2 extends LinearOpMode implements CameraBridgeViewBase.CvCa
             //Approximates the shape to smooth out excess edges
             MatOfPoint2f approx = new MatOfPoint2f();
             double peri = Imgproc.arcLength(new MatOfPoint2f(contours.get(i).toArray()), true);
-            Imgproc.approxPolyDP(new MatOfPoint2f(contours.get(i).toArray()), approx, 0.03 * peri, true); //0.1 is a detail factor, higher factor = lower detail, lower factor = higher detail
+            Imgproc.approxPolyDP(new MatOfPoint2f(contours.get(i).toArray()), approx, 0.05 * peri, true); //0.1 is a detail factor, higher factor = lower detail, lower factor = higher detail
             MatOfPoint approxMop = new MatOfPoint(approx.toArray());
 
             //Calculates a convex hull of the shape, covering up any dents
@@ -262,11 +160,18 @@ public class GoldMine2 extends LinearOpMode implements CameraBridgeViewBase.CvCa
                     usedy.add(center.y);
 
                     Rect box = Imgproc.boundingRect(convex);
-                    Mat roi = temp2.submat(box);
-                    double[] sm = calcStdDevMean(roi);
-                    if(sm[1] > maxMean) {
-                        bestContour = new MatOfPoint(convex.toArray());
-                        maxMean = sm[1];
+                    Mat roi = intensityMap.submat(box);
+                    Core.MinMaxLocResult res = Core.minMaxLoc(roi);
+                    if(res.maxVal >= 0.75*max) {
+                        Imgproc.drawContours(input, contours, i, new Scalar(255,0, 0), 1);
+                        if(convex.toList().size() == 4 || convex.toList().size() == 5 || convex.toList().size() == 6) {
+                            Imgproc.drawContours(input, contours, i, new Scalar(0,0, 255), 1);
+                            Rect bbox = Imgproc.boundingRect(convex);
+                            System.out.println((1.0*bbox.width)/(1.0*bbox.height));
+                            if((1.0*bbox.width)/(1.0*bbox.height) >= Math.sqrt(2)/2.0 && (1.0*bbox.width)/(1.0*bbox.height) <= Math.sqrt(2)) {
+                                Imgproc.drawContours(input, contours, i, new Scalar(0,255, 0), 1);
+                            }
+                        }
                     }
                 }
             }
@@ -277,24 +182,12 @@ public class GoldMine2 extends LinearOpMode implements CameraBridgeViewBase.CvCa
         }
 
 
-        if(!bestContour.empty()) {
-            List<MatOfPoint> g = new ArrayList<>();
-            g.add(bestContour);
-            Imgproc.drawContours(input, g, -1, new Scalar(0, 255, 0), 1);
-        }
-        //Removes used images from memory to avoid overflow crashes
-        masked.release();
-
-
         //Empties the cosmic garbage can
         System.gc();
-        Mat returnImage = sbChan;
 
+
+        Mat returnImage = input;
         Imgproc.resize(returnImage,returnImage,new Size(1280,720));
-
-        //Empties the cosmic garbage can
-        System.gc();
-
         return returnImage;
     }
 
