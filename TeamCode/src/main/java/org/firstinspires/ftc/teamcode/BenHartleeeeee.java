@@ -108,27 +108,27 @@ public class BenHartleeeeee extends LinearOpMode implements CameraBridgeViewBase
         //sleep(1000);
         //turnPID(0.7,180,5);
         //stab.setPosition(1);
-        drive(new Vector(0,-1),700);
+        drive(new Vector(0,-1),1000);
         //stab.setPosition(1);
         //stab.setPosition(-1);
     }
 
 
     public void drive(Vector v, double distance) {
-        int zeroInit = zero.getCurrentPosition();
-        int oneInit = one.getCurrentPosition();
-        int twoInit = two.getCurrentPosition();
-        int threeInit = three.getCurrentPosition();
 
+        zero.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        two.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        one.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        three.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
         zero.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         two.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         one.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        //three.setMode(DcMotor.RunMode);
+        three.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         v.rotate(-Math.PI/4);
 
-        while(zero.getCurrentPosition() < zeroInit+distance && one.getCurrentPosition() < oneInit+distance && two.getCurrentPosition() < twoInit+distance && three.getCurrentPosition() < threeInit+distance && opModeIsActive()) {
+        while(Math.abs(zero.getCurrentPosition()) < Math.abs(distance) && Math.abs(one.getCurrentPosition()) < Math.abs(distance) && Math.abs(two.getCurrentPosition()) < Math.abs(distance) && Math.abs(three.getCurrentPosition()) < Math.abs(distance) && opModeIsActive()) {
             zero.setPower(v.x);
             one.setPower(v.y);
             two.setPower(v.y);
