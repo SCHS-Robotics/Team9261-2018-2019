@@ -120,6 +120,12 @@ public class BenHartleeeeee extends LinearOpMode implements CameraBridgeViewBase
         int twoInit = two.getCurrentPosition();
         int threeInit = three.getCurrentPosition();
 
+
+        zero.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        two.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        one.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        //three.setMode(DcMotor.RunMode);
+
         v.rotate(-Math.PI/4);
 
         while(zero.getCurrentPosition() < zeroInit+distance && one.getCurrentPosition() < oneInit+distance && two.getCurrentPosition() < twoInit+distance && three.getCurrentPosition() < threeInit+distance && opModeIsActive()) {
