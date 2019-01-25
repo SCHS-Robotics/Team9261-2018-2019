@@ -26,7 +26,8 @@ import java.util.List;
 @TeleOp(name="Gold Miner", group="OpMode")
 public class GoldMine2 extends LinearOpMode implements CameraBridgeViewBase.CvCameraViewListener2{
 
-    Retina retina;
+    private Retina retina;
+    private NonMaxSuppressor nonMaxSuppressor;
 
     @Override
     public void runOpMode() {
@@ -48,6 +49,8 @@ public class GoldMine2 extends LinearOpMode implements CameraBridgeViewBase.CvCa
         retina = Retina.create(new Size(320,180));
         retina.setup();
         retina.clearBuffers();
+
+        nonMaxSuppressor = new NonMaxSuppressor(0.3);
     }
 
     @Override
@@ -136,6 +139,8 @@ public class GoldMine2 extends LinearOpMode implements CameraBridgeViewBase.CvCa
         Core.MinMaxLocResult minMaxLocResult = Core.minMaxLoc(intensityMap);
         double max = minMaxLocResult.maxVal;
 
+        List<Rect> bboxes = new ArrayList<>();
+
         List<Double> usedx = new ArrayList<>();
         List<Double> usedy = new ArrayList<>();
         //Loops through the list of shapes (contours) and finds the ones most likely to be a cube
@@ -145,7 +150,6 @@ public class GoldMine2 extends LinearOpMode implements CameraBridgeViewBase.CvCa
             double peri = Imgproc.arcLength(new MatOfPoint2f(contours.get(i).toArray()), true);
             Imgproc.approxPolyDP(new MatOfPoint2f(contours.get(i).toArray()), approx, 0.05 * peri, true); //0.1 is a detail factor, higher factor = lower detail, lower factor = higher detail
             MatOfPoint approxMop = new MatOfPoint(approx.toArray());
-
             //Calculates a convex hull of the shape, covering up any dents
             MatOfPoint convex = hull(approxMop);
             //Does a simple size check to eliminate extremely small contours
@@ -158,7 +162,6 @@ public class GoldMine2 extends LinearOpMode implements CameraBridgeViewBase.CvCa
                 if (containsPoint(approx,centers) && !(usedx.contains(center.x) && usedy.contains(center.y))) {
                     usedx.add(center.x);
                     usedy.add(center.y);
-
                     Rect box = Imgproc.boundingRect(convex);
                     Mat roi = intensityMap.submat(box);
                     Core.MinMaxLocResult res = Core.minMaxLoc(roi);
@@ -170,6 +173,7 @@ public class GoldMine2 extends LinearOpMode implements CameraBridgeViewBase.CvCa
                             System.out.println((1.0*bbox.width)/(1.0*bbox.height));
                             if((1.0*bbox.width)/(1.0*bbox.height) >= Math.sqrt(2)/2.0 && (1.0*bbox.width)/(1.0*bbox.height) <= Math.sqrt(2)) {
                                 Imgproc.drawContours(input, contours, i, new Scalar(0,255, 0), 1);
+                                bboxes.add(bbox);
                             }
                         }
                     }
@@ -181,6 +185,11 @@ public class GoldMine2 extends LinearOpMode implements CameraBridgeViewBase.CvCa
             approxMop.release();
         }
 
+        List<Rect> goodBoxes = nonMaxSuppressor.suppressNonMax(bboxes);
+
+        for(Rect box: goodBoxes) {
+            Imgproc.rectangle(input,new Point(box.x,box.y),new Point(box.x+box.width,box.y+box.height),new Scalar(0,255,0),1);
+        }
 
         //Empties the cosmic garbage can
         System.gc();
