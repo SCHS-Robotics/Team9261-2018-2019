@@ -88,7 +88,7 @@ public class BenHartleeeeee extends LinearOpMode implements CameraBridgeViewBase
 
 
         // deploy();
-        drive(new Vector(1,0),300);
+        //drive(new Vector(1,0),300);
         /*sleep(1000);
         long similarityTime = System.currentTimeMillis();
         long lostTime = 0;
@@ -108,6 +108,7 @@ public class BenHartleeeeee extends LinearOpMode implements CameraBridgeViewBase
         //sleep(1000);
         //turnPID(0.7,180,5);
         //stab.setPosition(1);
+        turnPID(0.7, -45,1);
         drive(new Vector(0,-1),1000);
         //stab.setPosition(1);
         //stab.setPosition(-1);
@@ -168,7 +169,7 @@ public class BenHartleeeeee extends LinearOpMode implements CameraBridgeViewBase
     public void turnPID(double velocity, double angle, double threshold) throws InterruptedException {
         double elapsedTime = 1;
         double accumulatedError = 0;
-        double lastError = 0;
+        double lastError = getYaw()-angle;
         double kp = 0.025;
         double ki = 0.00001;
         double kd = 0.05;
@@ -179,8 +180,6 @@ public class BenHartleeeeee extends LinearOpMode implements CameraBridgeViewBase
             double p = kp * error; //proportional component, bases the change to output request based on the amount of error present
             double i = ki * (error + accumulatedError) * elapsedTime;//integral component, bases the change to output request based on the accumulation of error present
             double d = kd * (error - lastError) / elapsedTime;//derivative component, bases the change to output request based on the rate of change of error present
-            double pi = p + i;
-            double pd = p + d;
             double pid = p + i + d;
             zero.setPower(-pid);
             one.setPower(-pid);

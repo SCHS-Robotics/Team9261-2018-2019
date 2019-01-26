@@ -115,6 +115,7 @@ public class NonMaxSuppressor {
         for(int i = 0; i < overlaps.size(); i++) {
             if(overlaps.get(i) > thresh ) {
                 idxes.remove(i);
+                break;
             }
         }
     }

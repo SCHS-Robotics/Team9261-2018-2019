@@ -72,9 +72,9 @@ public class PIDTuner extends LinearOpMode {
 
         while(opModeIsActive()) {
 
-            kp += -gamepad1.right_stick_y;
-            kd += -gamepad1.left_stick_y;
-            ki += -gamepad2.right_stick_y;
+            kp += -gamepad1.right_stick_y / (gamepad1.right_stick_y + 150000);
+            kd += -gamepad1.left_stick_y / (gamepad1.left_stick_y + 150000);
+            ki += -gamepad2.right_stick_y / (gamepad2.right_stick_y + 150000);
 
             double startTime = System.currentTimeMillis();
             Orientation angles = dab.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
