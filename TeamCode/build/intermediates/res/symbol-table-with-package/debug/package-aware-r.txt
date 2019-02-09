@@ -406,6 +406,7 @@ raw cube_mesh_vertex_shader
 raw errormessage
 raw format_convert
 raw gold
+raw happy
 raw nxtstartupsound
 raw readme
 raw silver
