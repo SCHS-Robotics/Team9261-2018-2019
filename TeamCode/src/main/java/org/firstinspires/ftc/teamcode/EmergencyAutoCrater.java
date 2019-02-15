@@ -91,7 +91,7 @@ public class EmergencyAutoCrater extends LinearOpMode implements CameraBridgeVie
         while(opModeIsActive() && !imu.isGyroCalibrated()){
             sleep(50);
         }
-        drive(new Vector(0,-1),200);
+        //drive(new Vector(0,-1),200);
         //drive(new Vector(1,0),300);
         /*sleep(1000);
         long similarityTime = System.currentTimeMillis();

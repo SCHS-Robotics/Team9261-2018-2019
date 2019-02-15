@@ -99,7 +99,7 @@ public class DepotAuto extends LinearOpMode implements CameraBridgeViewBase.CvCa
         startOpenCV(this);
 
         sleep(3000);
-        drive(new Vector(0,-1),200);
+        //drive(new Vector(0,-1),200);
 
         double power = 0;
         double avg = 0;
