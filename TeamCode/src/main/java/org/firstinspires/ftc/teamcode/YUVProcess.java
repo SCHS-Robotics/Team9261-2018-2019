@@ -12,7 +12,7 @@ public class YUVProcess implements Runnable {
 
     public boolean running;
 
-    public YUVProcess(Mat input,Mat output) {
+    public YUVProcess(Mat input, Mat output) {
         this.input = input; //input mat must be in RGBA or RGB format
         this.output = output;
 

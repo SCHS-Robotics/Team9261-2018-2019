@@ -29,13 +29,15 @@ import org.opencv.imgproc.Moments;
 import java.util.ArrayList;
 import java.util.List;
 
-@Autonomous(name="BenHartleeeeee", group="PleaseHelp")
-public class BenHartleeeeee extends LinearOpMode implements CameraBridgeViewBase.CvCameraViewListener2{
+@Autonomous(name="BenHartleeeeee Crater", group="PleaseHelp")
+public class EmergencyAutoCrater extends LinearOpMode implements CameraBridgeViewBase.CvCameraViewListener2{
 
     DcMotor zero;
     DcMotor one;
     DcMotor two;
     DcMotor three;
+
+    boolean stop = false;
 
     DcMotor lift;
 
@@ -76,12 +78,6 @@ public class BenHartleeeeee extends LinearOpMode implements CameraBridgeViewBase
         two.setDirection(DcMotor.Direction.FORWARD);
         three.setDirection(DcMotor.Direction.REVERSE);
 
-        zero.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        one.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        two.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        three.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);;
-
-        lift.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         //stab.setPosition(1);
 
         telemetry.addData("Mode", "DONE :)");
@@ -95,7 +91,6 @@ public class BenHartleeeeee extends LinearOpMode implements CameraBridgeViewBase
         while(opModeIsActive() && !imu.isGyroCalibrated()){
             sleep(50);
         }
-
         drive(new Vector(0,-1),200);
         //drive(new Vector(1,0),300);
         /*sleep(1000);
@@ -117,11 +112,10 @@ public class BenHartleeeeee extends LinearOpMode implements CameraBridgeViewBase
         //sleep(1000);
         //turnPID(0.7,180,5);
         //stab.setPosition(1);
-        //turnPID(0.7, -45,1);
+        turnPID(0.7, -90,1);
+        drive(new Vector(0,1),3000);
         sleep(1000);
-        drive(new Vector(1,0),3000);
-        sleep(1000);
-        //stab.setPosition(1);
+        //stab.setPosition(-1);
         sleep(1000);
     }
 
@@ -175,6 +169,7 @@ public class BenHartleeeeee extends LinearOpMode implements CameraBridgeViewBase
             lift.setPower(-1);
         }
         lift.setPower(0);
+
     }
 
     public void turnPID(double velocity, double angle, double threshold) throws InterruptedException {
@@ -185,18 +180,20 @@ public class BenHartleeeeee extends LinearOpMode implements CameraBridgeViewBase
         double ki = 0;
         double kd = 0.019047809331823373;
         double error = 0;
-        while (Math.abs(getYaw() - angle) > threshold && (error-lastError)/elapsedTime < 0.34) {
+        while (Math.abs(getYaw() - angle) > threshold && opModeIsActive()) {
             double currentTime = System.currentTimeMillis();
             double sign = Math.abs((angle-getYaw())) <= 360-Math.abs((angle-getYaw())) ? Math.signum(angle-getYaw()) : -Math.signum(angle-getYaw());
-            error = sign* Math.min(Math.abs(angle-getYaw()),360-Math.abs((angle-getYaw())));
+            //double error = sign* Math.min(Math.abs(angle-getYaw()),360-Math.abs((angle-getYaw())));
+            error = angle%360-getYaw()%360;
+
             double p = kp * error; //proportional component, bases the change to output request based on the amount of error present
             double i = ki * (error + accumulatedError) * elapsedTime;//integral component, bases the change to output request based on the accumulation of error present
             double d = kd * (error - lastError) / elapsedTime;//derivative component, bases the change to output request based on the rate of change of error present
             double pid = p + i + d;
             zero.setPower(-pid);
-            one.setPower(-pid);
-            two.setPower(pid);
-            three.setPower(pid);
+            one.setPower(+pid);
+            two.setPower(-pid);
+            three.setPower(+pid);
             telemetry.addData("Heading", getYaw());
             telemetry.update();
             sleep(1);
