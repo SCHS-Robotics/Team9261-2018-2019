@@ -49,14 +49,12 @@ public class Macanum extends LinearOpMode {      //Creates a TeleOp class called
         two = hardwareMap.dcMotor.get("Ella-y");
         three = hardwareMap.dcMotor.get("Cole-y");
 
-        MediaPlayer chezbob = MediaPlayer.create(hardwareMap.appContext, R.raw.happy); //Plays music song that sounds like "Give up" but is really called "chezbob"
+        MediaPlayer chezbob = MediaPlayer.create(hardwareMap.appContext, R.raw.cantinasong); //Plays music song that sounds like "Give up" but is really called "chezbob"
 
         DcMotor lift = hardwareMap.dcMotor.get("lifty"); //Maps the lift
 
-        final DcMotor leftArm = hardwareMap.dcMotor.get("intakeTwo");
-        final DcMotor rightArm = hardwareMap.dcMotor.get("intakeThree");
+        final DcMotor intake = hardwareMap.dcMotor.get("IntakeArm");
         DcMotor spindle = hardwareMap.dcMotor.get("spindley");
-
 
         zero.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         two.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
@@ -65,8 +63,7 @@ public class Macanum extends LinearOpMode {      //Creates a TeleOp class called
 
         lift.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
-        leftArm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        rightArm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        intake.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         spindle.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         zero.setDirection(DcMotor.Direction.FORWARD);
@@ -74,8 +71,7 @@ public class Macanum extends LinearOpMode {      //Creates a TeleOp class called
         two.setDirection(DcMotor.Direction.FORWARD);
         three.setDirection(DcMotor.Direction.REVERSE);
 
-        leftArm.setDirection(DcMotor.Direction.FORWARD);
-        rightArm.setDirection(DcMotor.Direction.REVERSE);
+        intake.setDirection(DcMotor.Direction.FORWARD);
         spindle.setDirection(DcMotor.Direction.FORWARD);
 
         zero.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -83,8 +79,7 @@ public class Macanum extends LinearOpMode {      //Creates a TeleOp class called
         two.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         three.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
-        leftArm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        rightArm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        intake.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         spindle.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         lift.setDirection(DcMotor.Direction.FORWARD);
@@ -110,22 +105,6 @@ public class Macanum extends LinearOpMode {      //Creates a TeleOp class called
             telemetry.addData("y",inputVector.y);
             telemetry.update();
 
-            Thread leftIntake = new Thread() {
-                @Override
-                public void run() {
-                    leftArm.setPower(gamepad2.left_stick_y/10);
-                }
-            };
-            Thread rightIntake = new Thread() {
-                @Override
-                public void run() {
-                    rightArm.setPower(gamepad2.left_stick_y/5);
-                }
-            };
-
-            leftIntake.start();
-            rightIntake.start();
-
             lift.setPower(gamepad2.right_stick_y);
             if (gamepad2.a) {
                 spindle.setPower(0.5);
@@ -135,6 +114,7 @@ public class Macanum extends LinearOpMode {      //Creates a TeleOp class called
             }
             else  {
                 spindle.setPower(0);
+
             }
 
         }

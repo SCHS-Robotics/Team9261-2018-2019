@@ -25,7 +25,7 @@ public class Vector {
         this.r = vType == VectorType.CARTESIAN ? Math.sqrt(Math.pow(a,2)+Math.pow(b,2)) : a;
         this.theta = vType == VectorType.CARTESIAN ? Math.atan(b/a) : b;
     }
-    
+
     //Counterclockwise is positive, clockwise is negative
     //must be in radians
     public void rotate(double θ) {
