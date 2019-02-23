@@ -5,6 +5,7 @@ import android.media.MediaPlayer;
 import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
@@ -44,23 +45,30 @@ public class Macanum extends LinearOpMode{
         DcMotor two = hardwareMap.dcMotor.get("Ella-y");
         DcMotor three = hardwareMap.dcMotor.get("Cole-y");
 
+        DcMotor intake = hardwareMap.dcMotor.get("IntakeArm");
+        DcMotor spindle = hardwareMap.dcMotor.get("spindley");
+        CRServo spinner = hardwareMap.crservo.get("intake");
+
         MediaPlayer chezbob = MediaPlayer.create(hardwareMap.appContext, R.raw.chezbob);
 
-        //DcMotor lift = hardwareMap.dcMotor.get("lifty");
+        DcMotor lift = hardwareMap.dcMotor.get("lifty");
 
         zero.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         two.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         one.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         three.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
-        //lift.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        intake.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        spindle.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+        lift.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         zero.setDirection(DcMotor.Direction.FORWARD);
         one.setDirection(DcMotor.Direction.REVERSE);
         two.setDirection(DcMotor.Direction.FORWARD);
         three.setDirection(DcMotor.Direction.REVERSE);
 
-        //lift.setDirection(DcMotor.Direction.FORWARD);
+        lift.setDirection(DcMotor.Direction.FORWARD);
 
         waitForStart();
 
@@ -83,7 +91,7 @@ public class Macanum extends LinearOpMode{
             telemetry.addData("y",inputVector.y);
             telemetry.update();
 
-            //lift.setPower(gamepad2.right_stick_y);
+            lift.setPower(gamepad2.right_stick_y);
 
         }
 
