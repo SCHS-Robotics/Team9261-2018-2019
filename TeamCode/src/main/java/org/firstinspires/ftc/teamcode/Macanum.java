@@ -5,7 +5,9 @@ import android.media.MediaPlayer;
 import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.Range;
 
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
@@ -37,8 +39,7 @@ public class Macanum extends LinearOpMode {      //Creates a TeleOp class called
 
         dab.initialize(parameters); //Sets values and initalizes the gyroscope
         while(!dab.isGyroCalibrated() && !isStarted() && !isStopRequested()) {
-            sleep(50)
-            ;
+            sleep(50);
         } //Waits until the gyroscope is calibrated and started
 
         telemetry.addLine("PIZZA IS READY"); // Adds a line on the phone saying the "Pizza is ready"
@@ -50,11 +51,14 @@ public class Macanum extends LinearOpMode {      //Creates a TeleOp class called
         three = hardwareMap.dcMotor.get("Cole-y");
 
         MediaPlayer chezbob = MediaPlayer.create(hardwareMap.appContext, R.raw.cantinasong); //Plays music song that sounds like "Give up" but is really called "chezbob"
+        MediaPlayer hypesong = MediaPlayer.create(hardwareMap.appContext,R.raw.istanbul);
 
-        DcMotor lift = hardwareMap.dcMotor.get("lifty"); //Maps the lift
+        DcMotor lift = hardwareMap.dcMotor.get("lifty"); //    Maps the lift
 
-        final DcMotor intake = hardwareMap.dcMotor.get("IntakeArm");
+        DcMotor intake = hardwareMap.dcMotor.get("IntakeArm");
         DcMotor spindle = hardwareMap.dcMotor.get("spindley");
+
+        CRServo spinner = hardwareMap.crservo.get("intake");
 
         zero.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         two.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
@@ -73,6 +77,7 @@ public class Macanum extends LinearOpMode {      //Creates a TeleOp class called
 
         intake.setDirection(DcMotor.Direction.FORWARD);
         spindle.setDirection(DcMotor.Direction.FORWARD);
+        spinner.setDirection(CRServo.Direction.FORWARD);
 
         zero.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         one.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -103,23 +108,37 @@ public class Macanum extends LinearOpMode {      //Creates a TeleOp class called
 
             telemetry.addData("x",inputVector.x);
             telemetry.addData("y",inputVector.y);
-            telemetry.update();
 
             lift.setPower(gamepad2.right_stick_y);
+
+            telemetry.addData("a",gamepad2.a);
+
             if (gamepad2.a) {
-                spindle.setPower(0.5);
+                spindle.setPower(0.7);
             }
             else if(gamepad2.b) {
-                spindle.setPower(-0.5);
+                spindle.setPower(-0.7);
             }
             else  {
                 spindle.setPower(0);
 
             }
-
+            if(gamepad2.y) {
+                spinner.setPower(0.7);
+            }
+            else {
+                spinner.setPower(0);
+            }
+            if(gamepad2.x) {
+                chezbob.stop();
+                hypesong.start();
+            }
+            intake.setPower(gamepad2.left_stick_y);
+            telemetry.update();
         }
 
         chezbob.stop();
+        hypesong.stop();
     }
     public void turnPID(double angle) {
         Orientation angles1 = dab.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
