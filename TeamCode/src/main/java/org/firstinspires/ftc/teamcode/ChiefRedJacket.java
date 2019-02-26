@@ -3,17 +3,23 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.Servo;
 
-@Autonomous(name="test", group="banana")
+@Autonomous(name="Chief Red Jacket", group="banana")
 public class ChiefRedJacket extends LinearOpMode {
+    Servo stab;
     @Override
     public void runOpMode(){
-        DcMotor m1 = hardwareMap.dcMotor.get("hi");
-        m1.setDirection(DcMotor.Direction.REVERSE);
-
+        stab = hardwareMap.servo.get("stab");
+        stab.setDirection(Servo.Direction.FORWARD);
+        stab.setPosition(1);
         waitForStart();
-        m1.setPower(0.7);
-        sleep(9000);
-        m1.setPower(0);
+        raskolnikov();
+        sleep(10000);
+    }
+    public void raskolnikov() {
+        stab.setPosition(-1);
+        sleep(3000);
+        stab.setPosition(1);
     }
 }

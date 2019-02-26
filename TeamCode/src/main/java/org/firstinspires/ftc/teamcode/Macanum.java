@@ -93,6 +93,8 @@ public class Macanum extends LinearOpMode {      //Creates a TeleOp class called
 
         chezbob.start();
 
+        double b = 0;
+
         while(opModeIsActive())
         {
             Vector inputVector = new Vector(gamepad1.right_stick_x, -gamepad1.right_stick_y);
@@ -124,7 +126,8 @@ public class Macanum extends LinearOpMode {      //Creates a TeleOp class called
 
             }
             if(gamepad2.y) {
-                spinner.setPower(0.7);
+                spinner.setPower(b);
+                b += 0.1;
             }
             else {
                 spinner.setPower(0);

@@ -1,35 +1,39 @@
 [
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\layout_activity_load.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\1d5abdf1ab5a7631b7232b28421a543a\\res\\layout\\activity_load.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\eb3774f41d15e66e6d4ec9d8e628914a\\res\\layout\\activity_load.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\xml_k9legacybot.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\1d5abdf1ab5a7631b7232b28421a543a\\res\\xml\\k9legacybot.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\eb3774f41d15e66e6d4ec9d8e628914a\\res\\xml\\k9legacybot.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\xml_ftc_about_activity_rc.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\1d5abdf1ab5a7631b7232b28421a543a\\res\\xml\\ftc_about_activity_rc.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\eb3774f41d15e66e6d4ec9d8e628914a\\res\\xml\\ftc_about_activity_rc.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\xml_builtinwebcamcalibrations.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\RobotCore-release.aar\\9cdcc9efb2e764c0a79afec4de7aa634\\res\\xml\\builtinwebcamcalibrations.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\RobotCore-release.aar\\d0e6228d72fb528c740a5acee9578ec7\\res\\xml\\builtinwebcamcalibrations.xml"
+    },
+    {
+        "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\raw_istanbul.mp3.flat",
+        "source": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\src\\main\\res\\raw\\istanbul.mp3"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\xml_advanced_rc_settings.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\1d5abdf1ab5a7631b7232b28421a543a\\res\\xml\\advanced_rc_settings.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\eb3774f41d15e66e6d4ec9d8e628914a\\res\\xml\\advanced_rc_settings.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\layout_item_list_parent.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\1d5abdf1ab5a7631b7232b28421a543a\\res\\layout\\item_list_parent.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\eb3774f41d15e66e6d4ec9d8e628914a\\res\\layout\\item_list_parent.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\raw_format_convert.bc.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\RobotCore-release.aar\\9cdcc9efb2e764c0a79afec4de7aa634\\res\\raw\\format_convert.bc"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\RobotCore-release.aar\\d0e6228d72fb528c740a5acee9578ec7\\res\\raw\\format_convert.bc"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\xml_maxmodules.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\1d5abdf1ab5a7631b7232b28421a543a\\res\\xml\\maxmodules.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\eb3774f41d15e66e6d4ec9d8e628914a\\res\\xml\\maxmodules.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_ic_launcher.png.flat",
@@ -37,51 +41,55 @@
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\layout_feedback.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\RobotCore-release.aar\\9cdcc9efb2e764c0a79afec4de7aa634\\res\\layout\\feedback.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\RobotCore-release.aar\\d0e6228d72fb528c740a5acee9578ec7\\res\\layout\\feedback.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\drawable_icon_menu.png.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\Inspection-release.aar\\4cf8f3ae24d0064960a2ac35f33a0a70\\res\\drawable\\icon_menu.png"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\Inspection-release.aar\\1a68ef4afb775eacff4d375a56812740\\res\\drawable\\icon_menu.png"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\layout_red_line.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\1d5abdf1ab5a7631b7232b28421a543a\\res\\layout\\red_line.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\eb3774f41d15e66e6d4ec9d8e628914a\\res\\layout\\red_line.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\raw_cube_mesh_vertex_shader.glsl.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\RobotCore-release.aar\\9cdcc9efb2e764c0a79afec4de7aa634\\res\\raw\\cube_mesh_vertex_shader.glsl"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\RobotCore-release.aar\\d0e6228d72fb528c740a5acee9578ec7\\res\\raw\\cube_mesh_vertex_shader.glsl"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\raw_cube_mesh_fragment_shader.glsl.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\RobotCore-release.aar\\9cdcc9efb2e764c0a79afec4de7aa634\\res\\raw\\cube_mesh_fragment_shader.glsl"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\RobotCore-release.aar\\d0e6228d72fb528c740a5acee9578ec7\\res\\raw\\cube_mesh_fragment_shader.glsl"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\layout_header.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\1d5abdf1ab5a7631b7232b28421a543a\\res\\layout\\header.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\eb3774f41d15e66e6d4ec9d8e628914a\\res\\layout\\header.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\raw_simple_vertex_shader.glsl.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\RobotCore-release.aar\\9cdcc9efb2e764c0a79afec4de7aa634\\res\\raw\\simple_vertex_shader.glsl"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\RobotCore-release.aar\\d0e6228d72fb528c740a5acee9578ec7\\res\\raw\\simple_vertex_shader.glsl"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\layout_motor_controller_banner.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\1d5abdf1ab5a7631b7232b28421a543a\\res\\layout\\motor_controller_banner.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\eb3774f41d15e66e6d4ec9d8e628914a\\res\\layout\\motor_controller_banner.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\layout_activity_ftc_lynx_address_update.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\1d5abdf1ab5a7631b7232b28421a543a\\res\\layout\\activity_ftc_lynx_address_update.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\eb3774f41d15e66e6d4ec9d8e628914a\\res\\layout\\activity_ftc_lynx_address_update.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\xml_ftc_about_activity.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\1d5abdf1ab5a7631b7232b28421a543a\\res\\xml\\ftc_about_activity.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\eb3774f41d15e66e6d4ec9d8e628914a\\res\\xml\\ftc_about_activity.xml"
+    },
+    {
+        "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\raw_cantinasong.mp3.flat",
+        "source": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\src\\main\\res\\raw\\cantinasong.mp3"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\layout_analog_inputs.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\1d5abdf1ab5a7631b7232b28421a543a\\res\\layout\\analog_inputs.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\eb3774f41d15e66e6d4ec9d8e628914a\\res\\layout\\analog_inputs.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\layout_servo_list.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\1d5abdf1ab5a7631b7232b28421a543a\\res\\layout\\servo_list.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\eb3774f41d15e66e6d4ec9d8e628914a\\res\\layout\\servo_list.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\raw_readme.md.flat",
@@ -89,7 +97,7 @@
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\layout_lynx_module_configure_address.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\1d5abdf1ab5a7631b7232b28421a543a\\res\\layout\\lynx_module_configure_address.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\eb3774f41d15e66e6d4ec9d8e628914a\\res\\layout\\lynx_module_configure_address.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\raw_chezbob.wav.flat",
@@ -97,19 +105,19 @@
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\layout_activity_swap_usb_devices.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\1d5abdf1ab5a7631b7232b28421a543a\\res\\layout\\activity_swap_usb_devices.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\eb3774f41d15e66e6d4ec9d8e628914a\\res\\layout\\activity_swap_usb_devices.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\layout_matrices.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\1d5abdf1ab5a7631b7232b28421a543a\\res\\layout\\matrices.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\eb3774f41d15e66e6d4ec9d8e628914a\\res\\layout\\matrices.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\layout_digital_devices.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\1d5abdf1ab5a7631b7232b28421a543a\\res\\layout\\digital_devices.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\eb3774f41d15e66e6d4ec9d8e628914a\\res\\layout\\digital_devices.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\drawable_black_border.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\Blocks-release.aar\\3a173ddd224a94c7b32321d35bd892e8\\res\\drawable\\black_border.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\Blocks-release.aar\\ef2d9bc5cddf15b071c765dd471d0437\\res\\drawable\\black_border.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\xml_teamwebcamcalibrations.xml.flat",
@@ -117,23 +125,23 @@
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\raw_chimedisconnect.wav.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\1d5abdf1ab5a7631b7232b28421a543a\\res\\raw\\chimedisconnect.wav"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\eb3774f41d15e66e6d4ec9d8e628914a\\res\\raw\\chimedisconnect.wav"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\raw_nxtstartupsound.wav.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\1d5abdf1ab5a7631b7232b28421a543a\\res\\raw\\nxtstartupsound.wav"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\eb3774f41d15e66e6d4ec9d8e628914a\\res\\raw\\nxtstartupsound.wav"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\layout_activity_programming_mode.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\Blocks-release.aar\\3a173ddd224a94c7b32321d35bd892e8\\res\\layout\\activity_programming_mode.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\Blocks-release.aar\\ef2d9bc5cddf15b071c765dd471d0437\\res\\layout\\activity_programming_mode.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\layout_motor.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\1d5abdf1ab5a7631b7232b28421a543a\\res\\layout\\motor.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\eb3774f41d15e66e6d4ec9d8e628914a\\res\\layout\\motor.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\xml_k9usbbot.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\1d5abdf1ab5a7631b7232b28421a543a\\res\\xml\\k9usbbot.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\eb3774f41d15e66e6d4ec9d8e628914a\\res\\xml\\k9usbbot.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_icon_robotcontroller.png.flat",
@@ -141,31 +149,31 @@
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\xml_pushbotsens.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\1d5abdf1ab5a7631b7232b28421a543a\\res\\xml\\pushbotsens.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\eb3774f41d15e66e6d4ec9d8e628914a\\res\\xml\\pushbotsens.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\layout_digital_device_lynx.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\1d5abdf1ab5a7631b7232b28421a543a\\res\\layout\\digital_device_lynx.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\eb3774f41d15e66e6d4ec9d8e628914a\\res\\layout\\digital_device_lynx.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\layout_digital_device.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\1d5abdf1ab5a7631b7232b28421a543a\\res\\layout\\digital_device.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\eb3774f41d15e66e6d4ec9d8e628914a\\res\\layout\\digital_device.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\layout_activity_ftc_wifi_channel_selector.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\1d5abdf1ab5a7631b7232b28421a543a\\res\\layout\\activity_ftc_wifi_channel_selector.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\eb3774f41d15e66e6d4ec9d8e628914a\\res\\layout\\activity_ftc_wifi_channel_selector.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\layout_activity_ftc_lynx_fw_update.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\1d5abdf1ab5a7631b7232b28421a543a\\res\\layout\\activity_ftc_lynx_fw_update.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\eb3774f41d15e66e6d4ec9d8e628914a\\res\\layout\\activity_ftc_lynx_fw_update.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\layout_servo.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\1d5abdf1ab5a7631b7232b28421a543a\\res\\layout\\servo.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\eb3774f41d15e66e6d4ec9d8e628914a\\res\\layout\\servo.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\layout_analog_input_device.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\1d5abdf1ab5a7631b7232b28421a543a\\res\\layout\\analog_input_device.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\eb3774f41d15e66e6d4ec9d8e628914a\\res\\layout\\analog_input_device.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\layout_activity_ftc_controller.xml.flat",
@@ -173,67 +181,67 @@
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\layout_lynx_module.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\1d5abdf1ab5a7631b7232b28421a543a\\res\\layout\\lynx_module.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\eb3774f41d15e66e6d4ec9d8e628914a\\res\\layout\\lynx_module.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\layout_button_list.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\1d5abdf1ab5a7631b7232b28421a543a\\res\\layout\\button_list.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\eb3774f41d15e66e6d4ec9d8e628914a\\res\\layout\\button_list.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\layout_fragment_wifi_mute.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\RobotCore-release.aar\\9cdcc9efb2e764c0a79afec4de7aa634\\res\\layout\\fragment_wifi_mute.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\RobotCore-release.aar\\d0e6228d72fb528c740a5acee9578ec7\\res\\layout\\fragment_wifi_mute.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\layout_activity_generic_settings.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\1d5abdf1ab5a7631b7232b28421a543a\\res\\layout\\activity_generic_settings.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\eb3774f41d15e66e6d4ec9d8e628914a\\res\\layout\\activity_generic_settings.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\drawable_feedback_shape_orange.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\RobotCore-release.aar\\9cdcc9efb2e764c0a79afec4de7aa634\\res\\drawable\\feedback_shape_orange.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\RobotCore-release.aar\\d0e6228d72fb528c740a5acee9578ec7\\res\\drawable\\feedback_shape_orange.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\raw_texture_vertex_shader.glsl.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\RobotCore-release.aar\\9cdcc9efb2e764c0a79afec4de7aa634\\res\\raw\\texture_vertex_shader.glsl"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\RobotCore-release.aar\\d0e6228d72fb528c740a5acee9578ec7\\res\\raw\\texture_vertex_shader.glsl"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\raw_texture_fragment_shader.glsl.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\RobotCore-release.aar\\9cdcc9efb2e764c0a79afec4de7aa634\\res\\raw\\texture_fragment_shader.glsl"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\RobotCore-release.aar\\d0e6228d72fb528c740a5acee9578ec7\\res\\raw\\texture_fragment_shader.glsl"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\layout_motor_list.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\1d5abdf1ab5a7631b7232b28421a543a\\res\\layout\\motor_list.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\eb3774f41d15e66e6d4ec9d8e628914a\\res\\layout\\motor_list.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\menu_main_menu.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\Inspection-release.aar\\4cf8f3ae24d0064960a2ac35f33a0a70\\res\\menu\\main_menu.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\Inspection-release.aar\\1a68ef4afb775eacff4d375a56812740\\res\\menu\\main_menu.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\layout_gray_line.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\1d5abdf1ab5a7631b7232b28421a543a\\res\\layout\\gray_line.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\eb3774f41d15e66e6d4ec9d8e628914a\\res\\layout\\gray_line.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\layout_analog_outputs.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\1d5abdf1ab5a7631b7232b28421a543a\\res\\layout\\analog_outputs.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\eb3774f41d15e66e6d4ec9d8e628914a\\res\\layout\\analog_outputs.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\layout_pwm_device.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\1d5abdf1ab5a7631b7232b28421a543a\\res\\layout\\pwm_device.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\eb3774f41d15e66e6d4ec9d8e628914a\\res\\layout\\pwm_device.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\layout_analog_output_device.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\1d5abdf1ab5a7631b7232b28421a543a\\res\\layout\\analog_output_device.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\eb3774f41d15e66e6d4ec9d8e628914a\\res\\layout\\analog_output_device.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\layout_lynx_module_configure_address_spin_item.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\1d5abdf1ab5a7631b7232b28421a543a\\res\\layout\\lynx_module_configure_address_spin_item.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\eb3774f41d15e66e6d4ec9d8e628914a\\res\\layout\\lynx_module_configure_address_spin_item.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\layout_legacy.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\1d5abdf1ab5a7631b7232b28421a543a\\res\\layout\\legacy.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\eb3774f41d15e66e6d4ec9d8e628914a\\res\\layout\\legacy.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\layout_matrix_devices.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\1d5abdf1ab5a7631b7232b28421a543a\\res\\layout\\matrix_devices.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\eb3774f41d15e66e6d4ec9d8e628914a\\res\\layout\\matrix_devices.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_ic_launcher.png.flat",
@@ -245,7 +253,7 @@
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\layout_activity_configure_from_template.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\1d5abdf1ab5a7631b7232b28421a543a\\res\\layout\\activity_configure_from_template.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\eb3774f41d15e66e6d4ec9d8e628914a\\res\\layout\\activity_configure_from_template.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\raw_gold.wav.flat",
@@ -253,27 +261,27 @@
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\layout_template_info.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\1d5abdf1ab5a7631b7232b28421a543a\\res\\layout\\template_info.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\eb3774f41d15e66e6d4ec9d8e628914a\\res\\layout\\template_info.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\xml_squarebot.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\1d5abdf1ab5a7631b7232b28421a543a\\res\\xml\\squarebot.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\eb3774f41d15e66e6d4ec9d8e628914a\\res\\xml\\squarebot.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\layout_servo_controller_banner.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\1d5abdf1ab5a7631b7232b28421a543a\\res\\layout\\servo_controller_banner.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\eb3774f41d15e66e6d4ec9d8e628914a\\res\\layout\\servo_controller_banner.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\layout_activity_inspection.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\Inspection-release.aar\\4cf8f3ae24d0064960a2ac35f33a0a70\\res\\layout\\activity_inspection.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\Inspection-release.aar\\1a68ef4afb775eacff4d375a56812740\\res\\layout\\activity_inspection.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\xml_rev_scoot.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\1d5abdf1ab5a7631b7232b28421a543a\\res\\xml\\rev_scoot.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\eb3774f41d15e66e6d4ec9d8e628914a\\res\\xml\\rev_scoot.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\layout_device_interface_module.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\1d5abdf1ab5a7631b7232b28421a543a\\res\\layout\\device_interface_module.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\eb3774f41d15e66e6d4ec9d8e628914a\\res\\layout\\device_interface_module.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_ic_launcher.png.flat",
@@ -281,23 +289,23 @@
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\xml_pushbot.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\1d5abdf1ab5a7631b7232b28421a543a\\res\\xml\\pushbot.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\eb3774f41d15e66e6d4ec9d8e628914a\\res\\xml\\pushbot.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\raw_errormessage.wav.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\1d5abdf1ab5a7631b7232b28421a543a\\res\\raw\\errormessage.wav"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\eb3774f41d15e66e6d4ec9d8e628914a\\res\\raw\\errormessage.wav"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\raw_color_fragment_shader.glsl.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\RobotCore-release.aar\\9cdcc9efb2e764c0a79afec4de7aa634\\res\\raw\\color_fragment_shader.glsl"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\RobotCore-release.aar\\d0e6228d72fb528c740a5acee9578ec7\\res\\raw\\color_fragment_shader.glsl"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\layout_banner_parent.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\1d5abdf1ab5a7631b7232b28421a543a\\res\\layout\\banner_parent.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\eb3774f41d15e66e6d4ec9d8e628914a\\res\\layout\\banner_parent.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\layout_loading_indicator_overlay.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\RobotCore-release.aar\\9cdcc9efb2e764c0a79afec4de7aa634\\res\\layout\\loading_indicator_overlay.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\RobotCore-release.aar\\d0e6228d72fb528c740a5acee9578ec7\\res\\layout\\loading_indicator_overlay.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\xml_device_filter.xml.flat",
@@ -305,23 +313,23 @@
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\layout_activity_ftc_configuration.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\1d5abdf1ab5a7631b7232b28421a543a\\res\\layout\\activity_ftc_configuration.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\eb3774f41d15e66e6d4ec9d8e628914a\\res\\layout\\activity_ftc_configuration.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\layout_i2cs.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\1d5abdf1ab5a7631b7232b28421a543a\\res\\layout\\i2cs.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\eb3774f41d15e66e6d4ec9d8e628914a\\res\\layout\\i2cs.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\layout_lynx_usb_device.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\1d5abdf1ab5a7631b7232b28421a543a\\res\\layout\\lynx_usb_device.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\eb3774f41d15e66e6d4ec9d8e628914a\\res\\layout\\lynx_usb_device.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\layout_activity_ftc_wifi_remembered_groups.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\1d5abdf1ab5a7631b7232b28421a543a\\res\\layout\\activity_ftc_wifi_remembered_groups.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\eb3774f41d15e66e6d4ec9d8e628914a\\res\\layout\\activity_ftc_wifi_remembered_groups.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\layout_activity_blocks.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\Blocks-release.aar\\3a173ddd224a94c7b32321d35bd892e8\\res\\layout\\activity_blocks.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\Blocks-release.aar\\ef2d9bc5cddf15b071c765dd471d0437\\res\\layout\\activity_blocks.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_icon_menu.png.flat",
@@ -329,35 +337,35 @@
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\layout_info_button.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\1d5abdf1ab5a7631b7232b28421a543a\\res\\layout\\info_button.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\eb3774f41d15e66e6d4ec9d8e628914a\\res\\layout\\info_button.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\layout_pwms.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\1d5abdf1ab5a7631b7232b28421a543a\\res\\layout\\pwms.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\eb3774f41d15e66e6d4ec9d8e628914a\\res\\layout\\pwms.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\layout_activity_program_and_manage.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\1d5abdf1ab5a7631b7232b28421a543a\\res\\layout\\activity_program_and_manage.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\eb3774f41d15e66e6d4ec9d8e628914a\\res\\layout\\activity_program_and_manage.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\layout_port_attached_row.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\1d5abdf1ab5a7631b7232b28421a543a\\res\\layout\\port_attached_row.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\eb3774f41d15e66e6d4ec9d8e628914a\\res\\layout\\port_attached_row.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\menu_menu_server.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\Blocks-release.aar\\3a173ddd224a94c7b32321d35bd892e8\\res\\menu\\menu_server.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\Blocks-release.aar\\ef2d9bc5cddf15b071c765dd471d0437\\res\\menu\\menu_server.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_button_shape.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\1d5abdf1ab5a7631b7232b28421a543a\\res\\drawable-hdpi-v4\\button_shape.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\eb3774f41d15e66e6d4ec9d8e628914a\\res\\drawable-hdpi-v4\\button_shape.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\layout_i2c_device.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\1d5abdf1ab5a7631b7232b28421a543a\\res\\layout\\i2c_device.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\eb3774f41d15e66e6d4ec9d8e628914a\\res\\layout\\i2c_device.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\raw_warningmessage.wav.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\1d5abdf1ab5a7631b7232b28421a543a\\res\\raw\\warningmessage.wav"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\eb3774f41d15e66e6d4ec9d8e628914a\\res\\raw\\warningmessage.wav"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\menu_ftc_robot_controller.xml.flat",
@@ -365,31 +373,31 @@
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\drawable_button_shape.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\1d5abdf1ab5a7631b7232b28421a543a\\res\\drawable\\button_shape.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\eb3774f41d15e66e6d4ec9d8e628914a\\res\\drawable\\button_shape.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\layout_file_info.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\1d5abdf1ab5a7631b7232b28421a543a\\res\\layout\\file_info.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\eb3774f41d15e66e6d4ec9d8e628914a\\res\\layout\\file_info.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\drawable_icon_robotcontroller.png.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\Inspection-release.aar\\4cf8f3ae24d0064960a2ac35f33a0a70\\res\\drawable\\icon_robotcontroller.png"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\Inspection-release.aar\\1a68ef4afb775eacff4d375a56812740\\res\\drawable\\icon_robotcontroller.png"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\layout_activity_config_wifi_direct.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\1d5abdf1ab5a7631b7232b28421a543a\\res\\layout\\activity_config_wifi_direct.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\eb3774f41d15e66e6d4ec9d8e628914a\\res\\layout\\activity_config_wifi_direct.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\raw_chimeconnect.wav.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\1d5abdf1ab5a7631b7232b28421a543a\\res\\raw\\chimeconnect.wav"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\eb3774f41d15e66e6d4ec9d8e628914a\\res\\raw\\chimeconnect.wav"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\layout_webcam_device.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\1d5abdf1ab5a7631b7232b28421a543a\\res\\layout\\webcam_device.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\eb3774f41d15e66e6d4ec9d8e628914a\\res\\layout\\webcam_device.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\layout_simple_device.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\1d5abdf1ab5a7631b7232b28421a543a\\res\\layout\\simple_device.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\eb3774f41d15e66e6d4ec9d8e628914a\\res\\layout\\simple_device.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\xml_app_settings.xml.flat",
@@ -401,10 +409,10 @@
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\layout_color_list_preference_line_item.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\RobotCore-release.aar\\9cdcc9efb2e764c0a79afec4de7aa634\\res\\layout\\color_list_preference_line_item.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\RobotCore-release.aar\\d0e6228d72fb528c740a5acee9578ec7\\res\\layout\\color_list_preference_line_item.xml"
     },
     {
         "merged": "C:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\res\\merged\\debug\\layout_activity_view_logs.xml.flat",
-        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\1d5abdf1ab5a7631b7232b28421a543a\\res\\layout\\activity_view_logs.xml"
+        "source": "C:\\Users\\Emily\\.gradle\\caches\\transforms-1\\files-1.1\\FtcCommon-release.aar\\eb3774f41d15e66e6d4ec9d8e628914a\\res\\layout\\activity_view_logs.xml"
     }
 ]

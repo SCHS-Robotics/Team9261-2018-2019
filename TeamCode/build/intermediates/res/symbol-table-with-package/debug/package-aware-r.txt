@@ -397,6 +397,7 @@ layout webcam_device
 menu ftc_robot_controller
 menu main_menu
 menu menu_server
+raw cantinasong
 raw chezbob
 raw chimeconnect
 raw chimedisconnect
@@ -406,6 +407,7 @@ raw cube_mesh_vertex_shader
 raw errormessage
 raw format_convert
 raw gold
+raw istanbul
 raw nxtstartupsound
 raw readme
 raw silver
