@@ -1,4 +1,4 @@
-#Mon Feb 25 19:06:58 PST 2019
-base.0=C\:\\Users\\Emily\\Desktop\\sad2\\another_sad\\Team9261-2018-2019\\TeamCode\\build\\intermediates\\dex\\debug\\mergeDexDebug\\out
+#Wed Feb 27 20:24:33 PST 2019
+base.0=/Users/bobcats/Documents/GitHub/oof/Team9261-2018-2019/TeamCode/build/intermediates/dex/debug/mergeDexDebug/out
 path.0=classes.dex
 renamed.0=classes.dex

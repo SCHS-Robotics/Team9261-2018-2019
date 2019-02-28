@@ -31,7 +31,6 @@ public class DepotAuto extends LinearOpMode implements CameraBridgeViewBase.CvCa
     List<TrackedObject> tracked = new ArrayList<>();
     List<TrackedObject> newTracks = new ArrayList<>();
     List<Point> used = new ArrayList<>();
-    List<KalmanTracker> kalmanTrackers = new ArrayList<>();
     List<Rect> rects = new ArrayList<>();
     List<Rect> prevRects = new ArrayList<>();
 
@@ -86,7 +85,7 @@ public class DepotAuto extends LinearOpMode implements CameraBridgeViewBase.CvCa
 
         waitForStart();
 
-        deploy();
+        //deploy();
 
         dab.initialize(parameters);
         while(!dab.isGyroCalibrated() && !isStarted() && !isStopRequested()) {
@@ -112,7 +111,7 @@ public class DepotAuto extends LinearOpMode implements CameraBridgeViewBase.CvCa
         while(opModeIsActive() && time < 1000) {
 
 
-            if(!(blockCenter.x < 0 || blockCenter.y < 0)) {
+            if(!(blockCenter.x < 0 || blockCenter.y < 0 || blockCenter.x > xMax || blockCenter.y > 180)) {
                 power = feedback(blockCenter.x,xMax/2);
                 telemetry.addData("go this power",power);
                 telemetry.addData("direction",power > 0 ? "right" : power < 0 ? "left" : "stop" );
@@ -127,7 +126,7 @@ public class DepotAuto extends LinearOpMode implements CameraBridgeViewBase.CvCa
                 time = System.currentTimeMillis()-stime;
                 power = -0.1;
             }
-            driveNoDist(new Vector(0.2,power));
+            driveNoDist(new Vector(0.2,-power));
             i++;
             avg+=power;
             avg /= (double) i;
@@ -136,7 +135,7 @@ public class DepotAuto extends LinearOpMode implements CameraBridgeViewBase.CvCa
         stopOpenCV();
         stopMotors();
         sleep(500);
-        drive(new Vector(0.7,-(avg/Math.abs(avg))*0.2),5000);
+        drive(new Vector(0.7,-(avg/Math.abs(avg))*0.2),5000); //this is supposed to drive the robot into the crater: BUT it wont bc no...
 
         sleep(1000);
         stopMotors();
@@ -366,13 +365,12 @@ public class DepotAuto extends LinearOpMode implements CameraBridgeViewBase.CvCa
             }
 
             for(TrackedObject t : tracked) {
-                if(!t.kt.wasUpdated && t.kt.missedTime < 3000) {
+                if(!t.kt.wasUpdated && t.kt.missedTime < 1000 && t.kt.trustworthyness > 0.5) {
                     t.kt.update(new Point(),false);
                     Point center = new Point(t.r.x + t.r.width / 2.0, t.r.y + t.r.height / 2.0);
                     t.r = new Rect(Math.max(0, (int) Math.round(t.r.x + (t.kt.lastResult.x - center.x))), Math.max(0, (int) Math.round(t.r.y + (t.kt.lastResult.y - center.y))), t.r.width, t.r.height);
                     newTracks.add(t);
                 }
-                Imgproc.circle(input,t.kt.lastResult,5,new Scalar(255,0,0),-1);
             }
 
             used.clear();
@@ -381,9 +379,17 @@ public class DepotAuto extends LinearOpMode implements CameraBridgeViewBase.CvCa
             tracked.addAll(newTracks);
             newTracks.clear();
 
-            //System.out.println(tracked.size());
+            for(TrackedObject t : tracked) {
 
-            //System.out.println("");
+
+                Point prediction = t.kt.getPrediction();
+                Imgproc.circle(input,prediction,5,new Scalar(0,0,255),-1);
+
+                Imgproc.putText(input,Double.toString(Math.round(100*t.kt.trustworthyness)/100.0),prediction,Core.FONT_HERSHEY_PLAIN,1, new Scalar(255,0,0));
+
+                //System.out.println(t.kt.trustworthyness);
+                //Imgproc.circle(mat,prediction,5,new Scalar(0,0,255),-1);
+            }
             prevRects.clear();
             prevRects.addAll(rects);
 
@@ -566,7 +572,7 @@ public class DepotAuto extends LinearOpMode implements CameraBridgeViewBase.CvCa
         double compressionFactor = 4000; //Must be > 0 and positive. Larger compression factor means gentler x velocity changes
 
         //return x <= target ? Math.max(((-Math.pow(target,3)*Math.sqrt(1-(Math.pow(x,2)/Math.pow(target,2))))/(Math.pow(x,2))*compressionFactor),-Math.sqrt(3)/2.0) : Math.min(((Math.pow(xMax-target,2)*Math.sqrt(1-Math.pow((x-xMax)/(xMax-target),2)))/(Math.abs(x-xMax)*compressionFactor)),Math.sqrt(3)/2.0);
-        return 0.0001*(target-x);
+        return 0.001*(target-x);
     }
 
     public void startOpenCV(CameraBridgeViewBase.CvCameraViewListener2 cameraViewListener) {

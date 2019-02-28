@@ -95,19 +95,39 @@ public class Macanum extends LinearOpMode {      //Creates a TeleOp class called
 
         double b = 0;
 
+        double p = 0.02;
+
+        Orientation angles = dab.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.RADIANS);
+
+        double targetAngle = angles.firstAngle;
+        double error = targetAngle-angles.firstAngle;
+
+
         while(opModeIsActive())
         {
             Vector inputVector = new Vector(gamepad1.right_stick_x, -gamepad1.right_stick_y);
             telemetry.addData( "x0",inputVector.x);
             telemetry.addData("y0",inputVector.y);
-            Orientation angles = dab.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.RADIANS);
+
             inputVector.rotate(-(Math.PI/4));
 
-            zero.setPower(inputVector.x+gamepad1.left_stick_x);
-            one.setPower(inputVector.y-gamepad1.left_stick_x);
-            two.setPower(inputVector.y+gamepad1.left_stick_x);
-            three.setPower(inputVector.x-gamepad1.left_stick_x);
+            if(gamepad1.left_stick_x != 0) {
+                targetAngle = angles.firstAngle;
+            }
 
+            if(Math.abs(error) > 0.5 && gamepad1.left_stick_x == 0) {
+                double correction = p*error;
+                zero.setPower(inputVector.x + correction);
+                one.setPower(inputVector.y - correction);
+                two.setPower(inputVector.y + correction);
+                three.setPower(inputVector.x - correction);
+            }
+            else {
+                zero.setPower(inputVector.x + gamepad1.left_stick_x);
+                one.setPower(inputVector.y - gamepad1.left_stick_x);
+                two.setPower(inputVector.y + gamepad1.left_stick_x);
+                three.setPower(inputVector.x - gamepad1.left_stick_x);
+            }
             telemetry.addData("x",inputVector.x);
             telemetry.addData("y",inputVector.y);
 
@@ -126,8 +146,7 @@ public class Macanum extends LinearOpMode {      //Creates a TeleOp class called
 
             }
             if(gamepad2.y) {
-                spinner.setPower(b);
-                b += 0.1;
+                spinner.setPower(-1);
             }
             else {
                 spinner.setPower(0);
@@ -137,8 +156,15 @@ public class Macanum extends LinearOpMode {      //Creates a TeleOp class called
                 hypesong.start();
             }
             intake.setPower(gamepad2.left_stick_y);
+
+            angles = dab.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.RADIANS);
+            error = targetAngle-angles.firstAngle;
+
             telemetry.update();
+
+
         }
+
 
         chezbob.stop();
         hypesong.stop();
