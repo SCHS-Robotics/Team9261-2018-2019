@@ -29,6 +29,14 @@ public class GoldMine2 extends LinearOpMode implements CameraBridgeViewBase.CvCa
     private Retina retina;
     private NonMaxSuppressor nonMaxSuppressor;
 
+    List<TrackedObject> tracked = new ArrayList<>();
+    List<TrackedObject> newTracks = new ArrayList<>();
+    List<Point> used = new ArrayList<>();
+    List<Rect> rects = new ArrayList<>();
+    List<Rect> prevRects = new ArrayList<>();
+
+    Point blockCenter = new Point(-1,-1);
+
     @Override
     public void runOpMode() {
         // Initialize hardware code goes here
@@ -189,7 +197,59 @@ public class GoldMine2 extends LinearOpMode implements CameraBridgeViewBase.CvCa
 
         for(Rect box: goodBoxes) {
             Imgproc.rectangle(input,new Point(box.x,box.y),new Point(box.x+box.width,box.y+box.height),new Scalar(0,255,0),1);
+            rects.add(box);
         }
+        for (Rect r : rects) {
+            Point center = new Point(r.x + r.width / 2.0, r.y + r.height / 2.0);
+            boolean foundMatch = false;
+            for (TrackedObject t1 : tracked) {
+                if(t1.r.contains(center)) {
+                    t1.r = r;
+                    t1.kt.update(center,true);
+                    newTracks.add(t1);
+                    foundMatch = true;
+                    break;
+                }
+            }
+            if (!foundMatch) {
+                TrackedObject t2 = new TrackedObject(r, new KalmanTracker(center));
+                t2.kt.update(center,true);
+                newTracks.add(t2);
+            }
+        }
+
+        rects.clear();
+
+        for(TrackedObject t : tracked) {
+            if(!t.kt.wasUpdated && t.kt.missedTime < 1000 && t.kt.trustworthyness > 0.5) {
+                t.kt.update(new Point(),false);
+                Point center = new Point(t.r.x + t.r.width / 2.0, t.r.y + t.r.height / 2.0);
+                t.r = new Rect(Math.max(0, (int) Math.round(t.r.x + (t.kt.lastResult.x - center.x))), Math.max(0, (int) Math.round(t.r.y + (t.kt.lastResult.y - center.y))), t.r.width, t.r.height);
+                newTracks.add(t);
+            }
+        }
+
+        used.clear();
+
+        tracked.clear();
+        tracked.addAll(newTracks);
+        newTracks.clear();
+
+        for(TrackedObject t : tracked) {
+
+
+            Point prediction = t.kt.getPrediction();
+            Imgproc.circle(input,prediction,5,new Scalar(0,0,255),-1);
+
+            Imgproc.putText(input,Double.toString(Math.round(100*t.kt.trustworthyness)/100.0),prediction,Core.FONT_HERSHEY_PLAIN,1, new Scalar(255,0,0));
+
+            //System.out.println(t.kt.trustworthyness);
+            //Imgproc.circle(mat,prediction,5,new Scalar(0,0,255),-1);
+        }
+        prevRects.clear();
+        prevRects.addAll(rects);
+
+        blockCenter = getMaxTrust(tracked);
 
         //Empties the cosmic garbage can
         System.gc();
@@ -346,6 +406,18 @@ public class GoldMine2 extends LinearOpMode implements CameraBridgeViewBase.CvCa
         hull.release();
 
         return mopOut;
+    }
+
+    private Point getMaxTrust(List<TrackedObject> tl) {
+        double maxTrust = 0;
+        Point trusted = new Point(-1,-1);
+        for(TrackedObject t : tl) {
+            if(t.kt.trustworthyness > maxTrust) {
+                maxTrust = t.kt.trustworthyness;
+                trusted = t.kt.lastResult;
+            }
+        }
+        return trusted;
     }
 
     public void startOpenCV(CameraBridgeViewBase.CvCameraViewListener2 cameraViewListener) {
