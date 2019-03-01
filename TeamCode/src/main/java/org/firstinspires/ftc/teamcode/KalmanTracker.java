@@ -13,8 +13,10 @@ public class KalmanTracker {
 
     public boolean wasUpdated;
 
-    public long missedTime = 0;
-    private long creationTime;
+    public boolean isFirstUpdate;
+
+    public long lastUpdateTimer;
+    public long creationTime;
 
     public double trustworthyness;
     private int correctTimes;
@@ -78,9 +80,12 @@ public class KalmanTracker {
 
         creationTime = System.currentTimeMillis();
 
+        lastUpdateTimer = 0;
         trustworthyness = 0;
         totalUpdates = 0;
         correctTimes = 0;
+
+        isFirstUpdate = true;
     }
 
 
@@ -108,12 +113,17 @@ public class KalmanTracker {
             trustworthyness = 1.0*correctTimes/totalUpdates;
         }
 
-        missedTime = System.currentTimeMillis() - creationTime;
+        lastUpdateTimer = System.currentTimeMillis() - creationTime;
 
         // Correction
         Mat estimated = kf.correct(measurement); //updates predicted state from the measurement
         lastResult.x = estimated.get(0, 0)[0];
         lastResult.y = estimated.get(1, 0)[0];
+
+        if(totalUpdates%2 == 0 && isFirstUpdate) {
+            isFirstUpdate = false;
+        }
+
         return lastResult;
     }
 

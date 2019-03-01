@@ -365,7 +365,7 @@ public class DepotAuto extends LinearOpMode implements CameraBridgeViewBase.CvCa
             }
 
             for(TrackedObject t : tracked) {
-                if(!t.kt.wasUpdated && t.kt.missedTime < 1000 && t.kt.trustworthyness > 0.5) {
+                if(!t.kt.wasUpdated && t.kt.lastUpdateTimer < 1000 && t.kt.trustworthyness > 0.5) {
                     t.kt.update(new Point(),false);
                     Point center = new Point(t.r.x + t.r.width / 2.0, t.r.y + t.r.height / 2.0);
                     t.r = new Rect(Math.max(0, (int) Math.round(t.r.x + (t.kt.lastResult.x - center.x))), Math.max(0, (int) Math.round(t.r.y + (t.kt.lastResult.y - center.y))), t.r.width, t.r.height);

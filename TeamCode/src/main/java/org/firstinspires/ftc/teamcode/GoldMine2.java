@@ -29,6 +29,9 @@ public class GoldMine2 extends LinearOpMode implements CameraBridgeViewBase.CvCa
     private Retina retina;
     private NonMaxSuppressor nonMaxSuppressor;
 
+    int xMax = 320;
+    int yMax = 180;
+
     List<TrackedObject> tracked = new ArrayList<>();
     List<TrackedObject> newTracks = new ArrayList<>();
     List<Point> used = new ArrayList<>();
@@ -221,7 +224,7 @@ public class GoldMine2 extends LinearOpMode implements CameraBridgeViewBase.CvCa
         rects.clear();
 
         for(TrackedObject t : tracked) {
-            if(!t.kt.wasUpdated && t.kt.missedTime < 1000 && t.kt.trustworthyness > 0.5) {
+            if(!t.kt.wasUpdated && t.kt.lastUpdateTimer < 1000 && t.kt.trustworthyness > 0.5) {
                 t.kt.update(new Point(),false);
                 Point center = new Point(t.r.x + t.r.width / 2.0, t.r.y + t.r.height / 2.0);
                 t.r = new Rect(Math.max(0, (int) Math.round(t.r.x + (t.kt.lastResult.x - center.x))), Math.max(0, (int) Math.round(t.r.y + (t.kt.lastResult.y - center.y))), t.r.width, t.r.height);
@@ -411,13 +414,18 @@ public class GoldMine2 extends LinearOpMode implements CameraBridgeViewBase.CvCa
     private Point getMaxTrust(List<TrackedObject> tl) {
         double maxTrust = 0;
         Point trusted = new Point(-1,-1);
+        Point trustedBackup = new Point(-1,-1);
         for(TrackedObject t : tl) {
-            if(t.kt.trustworthyness > maxTrust) {
+            if(t.kt.trustworthyness >= maxTrust && !t.kt.isFirstUpdate) {
                 maxTrust = t.kt.trustworthyness;
                 trusted = t.kt.lastResult;
             }
+            else if(t.kt.isFirstUpdate) {
+                trustedBackup = t.kt.lastResult;
+            }
         }
-        return trusted;
+
+        return trusted.x >=0 ? trusted : trustedBackup;
     }
 
     public void startOpenCV(CameraBridgeViewBase.CvCameraViewListener2 cameraViewListener) {
