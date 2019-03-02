@@ -4,6 +4,7 @@ import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.robotcontroller.internal.FtcRobotControllerActivity;
 import org.opencv.android.CameraBridgeViewBase;
@@ -47,6 +48,8 @@ public class DepotAuto extends LinearOpMode implements CameraBridgeViewBase.CvCa
 
     DcMotor lift;
 
+    Servo stab;
+
     @Override
     public void runOpMode() {
 
@@ -64,6 +67,8 @@ public class DepotAuto extends LinearOpMode implements CameraBridgeViewBase.CvCa
         two = hardwareMap.dcMotor.get("Ella-y");
         three = hardwareMap.dcMotor.get("Cole-y");
         lift = hardwareMap.dcMotor.get("lifty");
+
+        stab = hardwareMap.servo.get("stab");
 
         zero.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         two.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
@@ -83,6 +88,10 @@ public class DepotAuto extends LinearOpMode implements CameraBridgeViewBase.CvCa
         two.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         three.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
+        stab.setDirection(Servo.Direction.FORWARD);
+
+        stab.setPosition(1);
+
         waitForStart();
 
         //deploy();
@@ -97,18 +106,16 @@ public class DepotAuto extends LinearOpMode implements CameraBridgeViewBase.CvCa
 
         startOpenCV(this);
 
-        sleep(3000);
-        //drive(new Vector(0,-1),200);
-
+        sleep(2000);
         double power = 0;
         double avg = 0;
         int i = 0;
         long stime = System.currentTimeMillis();
         long time = 0;
+        boolean oneDetection = false;
+        boolean movedLeft = false;
 
-        sleep(3000);
-
-        while(opModeIsActive() && time < 1000) {
+        while(opModeIsActive() && time < 1500) {
 
 
             if(!(blockCenter.x < 0 || blockCenter.y < 0 || blockCenter.x > xMax || blockCenter.y > 180)) {
@@ -119,26 +126,43 @@ public class DepotAuto extends LinearOpMode implements CameraBridgeViewBase.CvCa
 
                 stime = System.currentTimeMillis();
 
-                time = System.currentTimeMillis()-stime;
+                time = 0;
 
+                oneDetection = true;
+
+            }
+            else if(!oneDetection){
+                time = System.currentTimeMillis()-stime;
+                power = -0.6;
+                movedLeft = true;
             }
             else {
                 time = System.currentTimeMillis()-stime;
-                power = -0.1;
             }
-            driveNoDist(new Vector(0.2,-power));
+            telemetry.addData("avg",avg);
+            telemetry.update();
+            driveNoDist(new Vector(0.3,-power));
             i++;
-            avg+=power;
+            avg-=power;
             avg /= (double) i;
         }
 
         stopOpenCV();
         stopMotors();
         sleep(500);
-        drive(new Vector(0.7,-(avg/Math.abs(avg))*0.2),5000); //this is supposed to drive the robot into the crater: BUT it wont bc no...
+        drive(new Vector(0.7,Math.abs(avg) > 1e-6 || movedLeft  ? -(avg/Math.abs(avg))*0.3 : 0),Math.abs(avg) > 1e-6 ? 2000 : 1500); //this is supposed to drive the robot into the crater: BUT it wont bc no...
 
         sleep(1000);
+        raskolnikov(); //activates the ubermensch
+        sleep(1000);
+
         stopMotors();
+    }
+
+    public void raskolnikov() {
+        stab.setPosition(-1);
+        sleep(3000);
+        stab.setPosition(1);
     }
 
     public void stopMotors() {
@@ -364,6 +388,8 @@ public class DepotAuto extends LinearOpMode implements CameraBridgeViewBase.CvCa
                 }
             }
 
+            rects.clear();
+
             for(TrackedObject t : tracked) {
                 if(!t.kt.wasUpdated && t.kt.lastUpdateTimer < 1000 && t.kt.trustworthyness > 0.5) {
                     t.kt.update(new Point(),false);
@@ -410,14 +436,18 @@ public class DepotAuto extends LinearOpMode implements CameraBridgeViewBase.CvCa
 
     private Point getMaxTrust(List<TrackedObject> tl) {
         double maxTrust = 0;
-        Point trusted = new Point(-1,-1);
-        for(TrackedObject t : tl) {
-            if(t.kt.trustworthyness > maxTrust) {
+        Point trusted = new Point(-1, -1);
+        Point trustedBackup = new Point(-1, -1);
+        for (TrackedObject t : tl) {
+            if (t.kt.trustworthyness >= maxTrust && !t.kt.isFirstUpdate) {
                 maxTrust = t.kt.trustworthyness;
                 trusted = t.kt.lastResult;
+            } else if (t.kt.isFirstUpdate) {
+                trustedBackup = t.kt.lastResult;
             }
         }
-        return trusted;
+
+        return trusted.x >= 0 ? trusted : trustedBackup;
     }
 
     //Check if polygon contains any point in a list of points. True if polygon contains any point in the list, false otherwise
@@ -569,10 +599,8 @@ public class DepotAuto extends LinearOpMode implements CameraBridgeViewBase.CvCa
     }
 
     public double feedback(double x, double target) {
-        double compressionFactor = 4000; //Must be > 0 and positive. Larger compression factor means gentler x velocity changes
-
         //return x <= target ? Math.max(((-Math.pow(target,3)*Math.sqrt(1-(Math.pow(x,2)/Math.pow(target,2))))/(Math.pow(x,2))*compressionFactor),-Math.sqrt(3)/2.0) : Math.min(((Math.pow(xMax-target,2)*Math.sqrt(1-Math.pow((x-xMax)/(xMax-target),2)))/(Math.abs(x-xMax)*compressionFactor)),Math.sqrt(3)/2.0);
-        return 0.001*(target-x);
+        return 0.0015 *(target-x);
     }
 
     public void startOpenCV(CameraBridgeViewBase.CvCameraViewListener2 cameraViewListener) {

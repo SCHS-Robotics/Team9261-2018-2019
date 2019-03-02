@@ -131,21 +131,24 @@ public class Macanum extends LinearOpMode {      //Creates a TeleOp class called
             telemetry.addData("x",inputVector.x);
             telemetry.addData("y",inputVector.y);
 
-            lift.setPower(gamepad2.right_stick_y);
+            if(gamepad2.dpad_down) {
+                lift.setPower(1);
+            }
+            else if(gamepad2.dpad_up){
+                lift.setPower(-1);
+            }
+            else {
+                lift.setPower(0);
+            }
 
             telemetry.addData("a",gamepad2.a);
 
-            if (gamepad2.a) {
-                spindle.setPower(0.7);
-            }
-            else if(gamepad2.b) {
-                spindle.setPower(-0.7);
-            }
-            else  {
-                spindle.setPower(0);
+            spindle.setPower(gamepad2.right_stick_y);
 
+            if(gamepad2.right_trigger > 0) {
+                spinner.setPower(1);
             }
-            if(gamepad2.y) {
+            else if(gamepad2.left_trigger > 0) {
                 spinner.setPower(-1);
             }
             else {
@@ -155,6 +158,7 @@ public class Macanum extends LinearOpMode {      //Creates a TeleOp class called
                 chezbob.stop();
                 hypesong.start();
             }
+
             intake.setPower(gamepad2.left_stick_y);
 
             angles = dab.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.RADIANS);

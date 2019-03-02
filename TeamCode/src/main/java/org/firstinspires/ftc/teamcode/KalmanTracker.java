@@ -71,7 +71,7 @@ public class KalmanTracker {
         kf.set_processNoiseCov(processNoiseCov);
 
         Mat id1 = Mat.eye(2,2, CvType.CV_32F);
-        id1 = id1.mul(id1,1e-1);
+        id1 = id1.mul(id1,1e-3);
         kf.set_measurementNoiseCov(id1);
 
         Mat id2 = Mat.eye(params,params, CvType.CV_32F);

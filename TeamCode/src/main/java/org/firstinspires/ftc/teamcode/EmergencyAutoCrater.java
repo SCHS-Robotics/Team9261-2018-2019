@@ -59,6 +59,8 @@ public class EmergencyAutoCrater extends LinearOpMode implements CameraBridgeVie
         two = hardwareMap.dcMotor.get("Ella-y");
         three = hardwareMap.dcMotor.get("Cole-y");
 
+
+
         //MediaPlayer chezbob = MediaPlayer.create(hardwareMap.appContext, R.raw.chezbob);
 
         lift = hardwareMap.dcMotor.get("lifty");
