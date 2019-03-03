@@ -115,7 +115,7 @@ public class Macanum extends LinearOpMode {      //Creates a TeleOp class called
                 targetAngle = angles.firstAngle;
             }
 
-            if(Math.abs(error) > 0.5 && gamepad1.left_stick_x == 0) {
+            if(Math.abs(error) > 0.5 && gamepad1.left_stick_x < 0.1) {
                 double correction = p*error;
                 zero.setPower(inputVector.x + correction);
                 one.setPower(inputVector.y - correction);

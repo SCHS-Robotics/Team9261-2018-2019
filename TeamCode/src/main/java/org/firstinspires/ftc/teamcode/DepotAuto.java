@@ -5,8 +5,13 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.util.Range;
 
 import org.firstinspires.ftc.robotcontroller.internal.FtcRobotControllerActivity;
+import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
+import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
+import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
+import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 import org.opencv.android.CameraBridgeViewBase;
 import org.opencv.bioinspired.Retina;
 import org.opencv.core.Core;
@@ -50,11 +55,13 @@ public class DepotAuto extends LinearOpMode implements CameraBridgeViewBase.CvCa
 
     Servo stab;
 
+    BNO055IMU dab;
+
     @Override
     public void runOpMode() {
 
 
-        BNO055IMU dab = hardwareMap.get(BNO055IMU.class, "imu");
+        dab = hardwareMap.get(BNO055IMU.class, "imu");
         BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
 
         parameters.mode = BNO055IMU.SensorMode.IMU;
@@ -92,9 +99,11 @@ public class DepotAuto extends LinearOpMode implements CameraBridgeViewBase.CvCa
 
         stab.setPosition(1);
 
+        startOpenCV(this);
+
         waitForStart();
 
-        //deploy();
+        deploy();
 
         dab.initialize(parameters);
         while(!dab.isGyroCalibrated() && !isStarted() && !isStopRequested()) {
@@ -104,9 +113,6 @@ public class DepotAuto extends LinearOpMode implements CameraBridgeViewBase.CvCa
         telemetry.addLine("PIZZA IS READY");
         telemetry.update();
 
-        startOpenCV(this);
-
-        sleep(2000);
         double power = 0;
         double avg = 0;
         int i = 0;
@@ -116,8 +122,6 @@ public class DepotAuto extends LinearOpMode implements CameraBridgeViewBase.CvCa
         boolean movedLeft = false;
 
         while(opModeIsActive() && time < 1500) {
-
-
             if(!(blockCenter.x < 0 || blockCenter.y < 0 || blockCenter.x > xMax || blockCenter.y > 180)) {
                 power = feedback(blockCenter.x,xMax/2);
                 telemetry.addData("go this power",power);
@@ -140,6 +144,7 @@ public class DepotAuto extends LinearOpMode implements CameraBridgeViewBase.CvCa
                 time = System.currentTimeMillis()-stime;
             }
             telemetry.addData("avg",avg);
+            telemetry.addData("MovedLeft",movedLeft);
             telemetry.update();
             driveNoDist(new Vector(0.3,-power));
             i++;
@@ -149,19 +154,20 @@ public class DepotAuto extends LinearOpMode implements CameraBridgeViewBase.CvCa
 
         stopOpenCV();
         stopMotors();
-        sleep(500);
-        drive(new Vector(0.7,Math.abs(avg) > 1e-6 || movedLeft  ? -(avg/Math.abs(avg))*0.3 : 0),Math.abs(avg) > 1e-6 ? 2000 : 1500); //this is supposed to drive the robot into the crater: BUT it wont bc no...
-
-        sleep(1000);
+        drive(new Vector(0.7,Math.abs(avg) > 1e-6 || movedLeft  ? -(avg/Math.abs(avg))*0.3 : 0),Math.abs(avg) > 1e-6 || movedLeft ? 2000 : 1500);
         raskolnikov(); //activates the ubermensch
-        sleep(1000);
+
+        sleep(500);
+        turnPID(0.7,135,1);
+        drive(new Vector(-0.5,0),100);
+        drive(new Vector(0,1.2),3000);
 
         stopMotors();
     }
 
     public void raskolnikov() {
         stab.setPosition(-1);
-        sleep(3000);
+        sleep(500);
         stab.setPosition(1);
     }
 
@@ -203,20 +209,43 @@ public class DepotAuto extends LinearOpMode implements CameraBridgeViewBase.CvCa
         one.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         three.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
+        Orientation angles = dab.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
+        double target = angles.firstAngle;
+
         v.rotate(-Math.PI/4);
 
-        while(Math.abs(zero.getCurrentPosition()) < Math.abs(distance) && Math.abs(one.getCurrentPosition()) < Math.abs(distance) && Math.abs(two.getCurrentPosition()) < Math.abs(distance) && Math.abs(three.getCurrentPosition()) < Math.abs(distance) && opModeIsActive()) {
-            zero.setPower(v.x);
-            one.setPower(v.y);
-            two.setPower(v.y);
-            three.setPower(v.x);
+        double kp = 0.02766136770696903;
+        double kd = 0.019047809331823373;
+        double elapsedTime = 1;
 
+        double prevAngle = angles.firstAngle;
+
+        while(Math.abs(zero.getCurrentPosition()) < Math.abs(distance) && Math.abs(one.getCurrentPosition()) < Math.abs(distance) && Math.abs(two.getCurrentPosition()) < Math.abs(distance) && Math.abs(three.getCurrentPosition()) < Math.abs(distance) && opModeIsActive()) {
+
+            double startTime = System.currentTimeMillis();
+            angles = dab.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
+
+            double error = target - angles.firstAngle;
+
+            double p = kp*error;
+            double d = -kd*(angles.firstAngle-prevAngle)/elapsedTime;
+
+            double pd = p+d;
+
+            zero.setPower(v.x-pd);
+            one.setPower(v.y+pd);
+            two.setPower(v.y-pd);
+            three.setPower(v.x+pd);
+
+            elapsedTime = System.currentTimeMillis()-startTime;
+            prevAngle = angles.firstAngle;
         }
         zero.setPower(0);
         one.setPower(0);
         two.setPower(0);
         three.setPower(0);
     }
+
 
     @Override
     public void onCameraViewStarted(int width, int height) {
@@ -448,6 +477,54 @@ public class DepotAuto extends LinearOpMode implements CameraBridgeViewBase.CvCa
         }
 
         return trusted.x >= 0 ? trusted : trustedBackup;
+    }
+
+    public void turnPID(double velocity, double angle, double threshold) {
+        Orientation angles = dab.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
+        double elapsedTime = 1;
+        double prevAngle = angles.firstAngle;
+        double accumulatedError = 0;
+        double kp = 0.02766136770696903;
+        double ki = 0;
+        double kd = 0.019047809331823373;
+        double error = Double.MAX_VALUE;
+        while (Math.abs(error) > threshold && opModeIsActive()) {
+            double startTime = System.currentTimeMillis();
+
+            angles = dab.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
+            error = angle - angles.firstAngle;
+
+            double p = kp*error;
+            double i = (ki*error+accumulatedError)*elapsedTime;
+            double d = -kd*(angles.firstAngle-prevAngle)/elapsedTime;
+
+            double pid = p+i+d;
+
+            pid = Range.clip(pid,-velocity,velocity);
+
+            //Counter Clockwise; sets all the PID values
+
+            zero.setPower(-pid);
+            one.setPower(pid);
+            two.setPower(-pid);
+            three.setPower(pid);
+
+            accumulatedError += ki*error;
+
+            //Puts values on the phone that display the Roll, Pitch, Yaw, and the PID values
+            telemetry.addData("Roll",dab.getAngularOrientation().secondAngle);
+            telemetry.addData("Pitch",dab.getAngularOrientation().thirdAngle);
+            telemetry.addData("Yeet",dab.getAngularOrientation().firstAngle);
+
+            telemetry.addData("kp",kp);
+            telemetry.addData("ki",ki);
+            telemetry.addData("kd",kd);
+
+            telemetry.update();
+            elapsedTime = System.currentTimeMillis()-startTime;
+            prevAngle = angles.firstAngle;
+        }
+        stopMotors();
     }
 
     //Check if polygon contains any point in a list of points. True if polygon contains any point in the list, false otherwise
